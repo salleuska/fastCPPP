@@ -1,5 +1,8 @@
-args <- R.utils::commandArgs(asValue=TRUE)
+## This script perform calulation of the CPPP
+## for a given example
 #######################
+args <- R.utils::commandArgs(asValue=TRUE)
+
 ## set up args for the  script 
 ## --dirExample               ## directory for input/output
 ## --dataPath                 ## path to data
