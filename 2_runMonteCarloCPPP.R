@@ -22,7 +22,7 @@ discrepancyFunctions <- NULL
 discrepancyFunctionsArgs <- NULL
 
 ##  read CPPP code
-source("codeCPPP.R")
+source("calculateCPPP.R")
 
 ##  read registeredDiscrepancy
 source("registeredDiscrepancies.R")
