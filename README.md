@@ -30,6 +30,9 @@ install.packages("R2ucare")  ## for function marray
 
 ```bash
 
+├── 1_runCPPP.R
+├── 2_runMonteCarloCPPP.R
+├── calculateCPPP.R
 ├── README.md
 └── sec4_betaBinomialExample   ## Reproduce figures in Section 4
 

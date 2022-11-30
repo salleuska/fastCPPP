@@ -75,9 +75,6 @@ library(R2ucare) ## for function marray
 # the number of individuals never seen again (never)
 # mm <- marray(dip.hist,dip.freq)
 
-source("registeredDiscrepancies.R")
-source("codeCPPP.R")
-
 getMArray <- function(history, indFreq) return(marray(history, indFreq)$m[,,1])
 getReleases <- function(history, indFreq) return(marray(history, indFreq)$R[,1])
 

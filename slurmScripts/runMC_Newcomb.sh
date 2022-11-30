@@ -7,7 +7,7 @@
 ######################
 
 ## newcomb example
-Rscript 2_runMonteCarloCPPP.R  \
+Rscript 2_runMonteCarloCPPP.R \
 --task=$SLURM_ARRAY_TASK_ID \
 --dataPath="newcomb/light.txt" \
 --dirExample=newcomb \

@@ -12,7 +12,7 @@ args <- R.utils::commandArgs(asValue=TRUE)
 ## -- returnDiscrepancies
 ## -- calcDisc
 #######################
-## This script perform calulation of the CPPP multiple times to obtain
+## This script performs calculation of the CPPP multiple times to obtain
 ## monte carlo estiamtes; the script is set up to run on a cluster using slurm 
 #######################
 library(nimble)
