@@ -1,16 +1,20 @@
 #!/bin/bash
 #SBATCH --mail-type=ALL                       
 #SBATCH --mail-user=spaganin@hsph.harvard.edu
-#SBATCH -o out/newcombBad_%j.out                 # File to which STDERR will be written, including job ID
+#SBATCH -o out/MCnewcomb_%j.out                 # File to which STDERR will be written, including job ID
+#SBATCH --cpus-per-task=1
+#SBATCH --array=1-500
 ######################
 
 ## newcomb example
-Rscript 1_runCPPP.R  \
---dirExample=newcombBadMixing \
+Rscript 2_runMonteCarloCPPP.R  \
+--task=$SLURM_ARRAY_TASK_ID \
 --dataPath="newcomb/light.txt" \
+--dirExample=newcomb \
 --runOriginal=TRUE \
 --nCalibrationReplicates=1000 \
 --nIterMCMC=1000 \
---returnSamples=TRUE \
+--returnSamples=FALSE \
 --returnDiscrepancies=TRUE \
---calcDisc=TRUE
+--calcDisc=TRUE 
+

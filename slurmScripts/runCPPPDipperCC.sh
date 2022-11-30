@@ -4,8 +4,9 @@
 #SBATCH -o out/dipperCC_%j.out                 # File to which STDERR will be written, including job ID
 ######################
 
-Rscript 1_runCPPPExample.R  \
+Rscript 1_runCPPP.R  \
 --dirExample=dipperCC \
+--dataPath="dipperCC/dipperData.RData" \
 --runOriginal=TRUE \
 --nCalibrationReplicates=1000 \
 --nIterMCMC=1000 \
@@ -13,7 +14,8 @@ Rscript 1_runCPPPExample.R  \
 --returnDiscrepancies=TRUE \
 --calcDisc=TRUE
 
-Rscript 1_runCPPPExample.R  \
+Rscript 1_runCPPP.R \
+--dataPath="dipperCC/dipperData.RData" \
 --dirExample=dipperCC \
 --runOriginal=FALSE \
 --nCalibrationReplicates=1000 \

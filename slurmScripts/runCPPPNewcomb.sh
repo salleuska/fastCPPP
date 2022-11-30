@@ -5,7 +5,7 @@
 ######################
 
 ## newcomb example
-Rscript 1_runCPPPExample.R  \
+Rscript 1_runCPPP.R \
 --dirExample=newcomb \
 --dataPath="newcomb/light.txt" \
 --runOriginal=TRUE \
@@ -15,7 +15,7 @@ Rscript 1_runCPPPExample.R  \
 --returnDiscrepancies=TRUE \
 --calcDisc=TRUE \
 
-Rscript 1_runCPPPExample.R  \
+Rscript 1_runCPPP.R \
 --dirExample=newcomb \
 --dataPath="newcomb/light.txt" \
 --runOriginal=FALSE \

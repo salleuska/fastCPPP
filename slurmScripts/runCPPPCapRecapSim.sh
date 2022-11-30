@@ -4,8 +4,9 @@
 #SBATCH -o out/simulated_%j.out                 # File to which STDERR will be written, including job ID
 ######################
 
-Rscript 1_runCPPPExample.R  \
+Rscript 1_runCPPP.R  \
 --dirExample=capRecapSimulated \
+--dataPath="capRecapSimulated/simulatedCR.RData" \
 --runOriginal=TRUE \
 --nCalibrationReplicates=1000 \
 --nIterMCMC=1000 \

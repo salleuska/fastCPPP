@@ -4,6 +4,7 @@ args <- R.utils::commandArgs(asValue=TRUE)
 ## set up args for the  script 
 ## -- task (slurmID)
 ## -- dirExample
+## -- dataPath
 ## -- runOriginal
 ## -- nCalibrationReplicates
 ## -- nIterMCMC
@@ -11,8 +12,8 @@ args <- R.utils::commandArgs(asValue=TRUE)
 ## -- returnDiscrepancies
 ## -- calcDisc
 #######################
-## This script perform calulation of the CPPP multiple times 
-## This is set up to run on a cluster using slurm 
+## This script perform calulation of the CPPP multiple times to obtain
+## monte carlo estiamtes; the script is set up to run on a cluster using slurm 
 #######################
 library(nimble)
 
@@ -30,6 +31,12 @@ if(is.null(args$dirExample)){
 	stop("provide directory path for the example to run")
 } else {
 	dirExample <- args$dirExample
+}
+
+if(is.null(args$dataPath)){
+  stop("provide directory path for the data")
+} else {
+  dataPath <- args$dataPath
 }
 
 if(is.null(args$nCalibrationReplicates)){
@@ -98,13 +105,5 @@ out <- runCalibration(## this comes from model.R file
                       nCores   = nCores) 
 
 saveRDS(out, file = paste0(dirExample, "/montecarlo/res_", task, ".rds"))
-
-
-# resDisc[[i]] <- out
-#   ## <- rowMeans(apply(out$repPPP, 2, function(x) x <= out$obsPPP))
-# 
-
-# ## save results
-# saveRDS(resCPPP, file = paste0(dirExample, "/results_MonteCarlo_nCRep", nCalibrationReplicates, "_nIter_", nIterMCMC, ".rds"))
 
 

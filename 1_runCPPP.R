@@ -80,7 +80,7 @@ nCores              <- if(is.null(args$nCores)) 1 					else as.numeric(args$nCor
 runOriginal 		<- if(is.null(args$runOriginal)) FALSE 			else as.logical(args$runOriginal) 
 
 ## Source model 
-source(paste0(dir, "/model.R"))
+source(paste0(dirExample, "/model.R"))
 
 
 ## Set log-likelihood as default discrepancy measure to run
