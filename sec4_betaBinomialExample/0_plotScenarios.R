@@ -78,6 +78,6 @@ allPlots <- cowplot::plot_grid(
    rel_widths = c(.85, .15), nrow=1)
 
 
-save_plot("figures/cpppScenarios.png", allPlots, 
+save_plot("figures/Fig1_cpppScenarios.png", allPlots, 
 		  base_height = 4, base_width = 5, ncol = 3)
 

@@ -46,27 +46,6 @@ for(betaScenario in 1:length(aVec)){
 
 }
 
-
-# pp <- qbeta(0.2, 2, 2, lower.tail = TRUE)
-
-# pbbinom(10*pp, 10, 2,2)
-# pbbinom(20*pp, 20, 2,2)
-# pbbinom(50*pp, 50, 2,2)
-
-
-# pbeta(pp, 2,2)
-
-# ss <- pbbinom(runif(1000, 0, 10), 10, 2, 2)
-# xx <- pbeta(runif(1000, 0, 1), 2, 2)
-
-
-# plot(density(ss))
-# qqplot(ss, xx)
-
-# curve(pbeta(x, 2, 2), 0, 1)
-
-
-
 dimnames(bias) <- list(1:length(aVec), compCost, M, cppp0)
 dimnames(variance) <- list(1:length(aVec), compCost, M, cppp0)
 
@@ -450,30 +429,4 @@ allPlots2 <- ggarrange(plotListBIAS2[[3]],
 allPlots2
 ggsave("figures/Fig2_BetaExperiment2.PNG", allPlots2, 
 		width = 10, height = 11)
-
-########################
-## Test fancy version
-########################
-# library(ggpubr)
-
-# curveColors <- brewer.pal(3, "Dark2")
-
-# p <- ggplot(data.frame(x = c(0, 1)), aes(x = x)) + 
-#         stat_function(fun = dbeta, args = list(aVec[1], bVec[1]),
-#                       colour = curveColors[1], size = 1.5) +
-#           geom_area(stat = "function", fun = dbeta, args = list(aVec[1], bVec[1]),
-#           	fill = curveColors[1], alpha = 0.6) +
-#         scale_x_continuous(breaks = seq(0, 1, 0.2),
-#                               limits=c(0, 1)) + 
-#         ylab("") + xlab("") + coord_cartesian(ylim = c(0,4))  +
-# 		theme_bw() + theme(legend.position="none")  
-# p
-
-# pX <- p + clean_theme() + rremove("legend")
-
-# mainplot <- plotListRMSE[[1]] + ggtitle("") + rremove("legend")
-
-# library(cowplot)
-# plot_grid(pX, NULL, mainplot, NULL, ncol = 2, align = "hv", 
-#           rel_widths = c(2, 1), rel_heights = c(1, 2))
 
