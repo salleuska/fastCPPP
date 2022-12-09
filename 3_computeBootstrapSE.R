@@ -156,8 +156,8 @@ for(r in 1:length(compCost)){
 		mcVarMBB[r,m] <- var(tmpVarMBB)
 		mcVarNormal[r,m] <- var(tmpNormal)
 
-		averageCoverageNormal[c, m] <- mean(coverageNormal)
-		averageCoverageMBB[c, m] <- mean(coverageMBB)
+		averageCoverageNormal[r, m] <- mean(coverageNormal)
+		averageCoverageMBB[r, m] <- mean(coverageMBB)
 
 	}
 }
