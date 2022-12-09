@@ -7,7 +7,7 @@
 Rscript 1_runCPPP.R  \
 --dirExample=capRecapSimulated \
 --dataPath="capRecapSimulated/simulatedCR.RData" \
---runOriginal=TRUE \
+--runOriginal=FALSE \
 --nCalibrationReplicates=1000 \
 --nIterMCMC=1000 \
 --returnSamples=TRUE \

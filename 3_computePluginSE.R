@@ -1,4 +1,7 @@
-library(maotai) ## MBB
+## This script compute the cppp variance using the plug-in estimator 
+## defined in section 5 of the paper
+## It also compute the coverage for the intervals
+
 library(mcmcse) ## mcmcse  
 
 args <- R.utils::commandArgs(asValue=TRUE)
@@ -6,7 +9,6 @@ args <- R.utils::commandArgs(asValue=TRUE)
 ## Possible arguments for the script
 ## --dirExample	 	## directory for input/output
 ## --indexStat		## index for the discrepancy to use (the runCalibration() function allows for multiple discrepancies)
-## --bootIters		## number of bootstrap iterations for the boostrap variance estimators
 #######################
 
 ## number of times we want to repeat the computation
@@ -23,7 +25,6 @@ nReplicates <- as.numeric(strsplit(args$filename, "_")[[1]][3])
 nIter 		<- as.numeric(strsplit(args$filename, "_|\\.")[[1]][5])
 
 indexStat <- as.numeric(args$indexStat)
-bootIters <- as.numeric(args$bootIters)
 res <- readRDS(args$filename)
 
 ## observed discrepancies
@@ -49,6 +50,7 @@ mOrig <- length(deltaObs)
 ## objects for output
 estimatesCPPP <- array(0, dim = c(length(compCost), length(M)))
 variancePlugin <- array(0, dim = c(length(compCost), length(M)))
+averageCoverage <- array(0, dim = c(length(compCost), length(M)))
 
 ## monte carlo variance estimates (for check)
 mcVarEstimatesCPPP <- array(0, dim = c(length(compCost), length(M)))
@@ -56,7 +58,8 @@ mcVarPlugin <- array(0, dim = c(length(compCost), length(M)))
 
 tmpMean <- numeric(N)
 tmpVarApprox <- numeric(N)
-tmpVarApproxTransfer <- numeric(N)
+tmpVariancePlugin <- numeric(N)
+coverage <- numeric(N)
 
 fMat <- array(0, dim = c(N, 100))
 
@@ -67,10 +70,12 @@ obsPPP <- res$obsPPP[indexStat]
 
 cat("Computing plug-in variance estimate \n")
 
+## for test
 # c <- m <- j <- 1
 for(c in 1:length(compCost)){
 	R <- compCost[c]/M
 	for(m in 1:length(M)){		
+	cat(paste0("comp cost = ", compCost[c], " MCMCsamples = ", M[m], " Cal. Rep = ", R[m], " \n"))
 		for(j in 1:N){ 
 			discList <- res$repDisc[sample(1:rTOT, R[m], replace = F)]
 			## use "continuity correction" to get the ppp
@@ -98,9 +103,9 @@ for(c in 1:length(compCost)){
 				}
 			}
 
-			## variance approximation
+			## Variance approximation
 
-			## first term E_Y[V[K|Y]]
+			## 1. first term E_Y[V[K|Y]]
 			## compute mean and variance of Ktilde
 			meanVec <- M[m]*pppVec
 			varVec <- M[m]*pppVec*(1 - pppVec)*tauTransfer
@@ -110,22 +115,27 @@ for(c in 1:length(compCost)){
 			## fVec <- pnorm(obsPPP + 0.5/M[m], mean = meanVec/M[m], sd = sqrt(varVec/M[m]^2), lower.tail = TRUE)
 			term1 <- mean(fVec*(1-fVec))
 	
-			## second term V_Y[E[K|Y]]
+			## 2. second term V_Y[E[K|Y]]
 			cpppHat <- mean(pppVec <= obsPPP)
 			term2 <- cpppHat*(1 - cpppHat)	
 
-			tmpVarApproxTransfer[j] <- (term1 + term2)/R[m]
+			tmpVariancePlugin[j] <- (term1 + term2)/R[m]
 			
-			if(j %% 10 == 0) cat("sample number - ", j, "\n")
+			## Coverage
 
+			CILow <- cpppEst -2*sqrt(tmpVariancePlugin[j])
+			CIUp <- cpppEst +2*sqrt(tmpVariancePlugin[j])
+
+			coverage[j] <- cpppEst <= CIUp & cpppEst >= CILow
+
+			if(j %% 10 == 0) cat("sample number - ", j, "\n")
 		}
 		
 		estimatesCPPP[c,m] <- mean(tmpMean)
-
 		mcVarEstimatesCPPP[c,m] <- var(tmpMean)
-
-		variancePlugin[c,m] 	<- mean(tmpVarApproxTransfer)
-		mcVarPlugin[c,m] 	<- var(tmpVarApproxTransfer)
+		averageCoverage[c, m] <- mean(coverage)
+		variancePlugin[c,m] 	<- mean(tmpVariancePlugin)
+		mcVarPlugin[c,m] 	<- var(tmpVariancePlugin)
 
 		averageESSTransfer[c,m] <- mean(tauTransfer/M[m])
 	}
@@ -139,13 +149,15 @@ dimnames(variancePlugin) <- list(compCost, M)
 dimnames(mcVarPlugin) <- list(compCost, M)
 dimnames(mcVarEstimatesCPPP) <- list(compCost, M)
 dimnames(averageESSTransfer) <- list(compCost, M)
+dimnames(averageCoverage) <- list(compCost, M)
 
 resVariance <- list(cpppEst = cpppEst, 
 					estimatesCPPP = estimatesCPPP, 
 					mcVarEstimatesCPPP = mcVarEstimatesCPPP,	
 					variancePlugin = variancePlugin,
 					mcVarPlugin= mcVarPlugin, 
-					averageESSTransfer = averageESSTransfer
+					averageESSTransfer = averageESSTransfer,
+					averageCoverage = averageCoverage
 )
 
 cat("Saving plug-in variance estimate \n")

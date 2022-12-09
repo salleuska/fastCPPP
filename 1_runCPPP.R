@@ -65,8 +65,8 @@ if(is.null(args$nIterMCMC)) {
 }
 
 ## Settings for MCMC
-MCMCcontrol <- list(niter   = nIterMCMC + nIterMCMC/10,
-                    nburnin = nIterMCMC/10, 
+MCMCcontrol <- list(niter   = nIterMCMC,
+                    nburnin = 0, 
                     thin 	= 1)
 
 ## Flags

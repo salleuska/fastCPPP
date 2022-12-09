@@ -3,7 +3,7 @@
 #SBATCH --mail-user=spaganin@hsph.harvard.edu
 #SBATCH -o out/MCdipperCC_%j.out                 # File to which STDERR will be written, including job ID
 #SBATCH --cpus-per-task=1
-#SBATCH --array=1-500
+#SBATCH --array=1-550
 ######################
 
 ## dipper CC example
