@@ -1,6 +1,6 @@
 # fastCPPP
 
-Supplementary NIMBLE code for the paper "Computational methods for Bayesian hierarchical model assessment"
+Supplementary NIMBLE code for the paper "Computational methods for fast Bayesian hierarchical model assessment"
 
 
 
@@ -8,6 +8,10 @@ Make sure to have the following `R` packages installed.
 
 ```r
 install.packages("nimble")
+
+## packages for cppp variance estimation
+install.packages("maotai")  ## moving block bootstrap
+install.packages("mcmcse")  ## mcmc variance
 
 ## packages for output processing and visualization
 install.packages("ggplot2")
