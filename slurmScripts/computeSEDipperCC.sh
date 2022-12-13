@@ -1,11 +1,15 @@
 #!/bin/bash
 #SBATCH --mail-type=ALL                       
 #SBATCH --mail-user=spaganin@hsph.harvard.edu
-#SBATCH -o out/dipperCC_%j.out                 # File to which STDERR will be written, including job ID
+#SBATCH -o out/dipperCC_variace_%j.out                 # File to which STDERR will be written, including job ID
 ######################
 
-
-Rscript 3_computeSE_BCEstimator.R \
+Rscript 3_computePluginSE.R \
 --filename="dipperCC/results_nCRep_1000_nIter_1000.rds" \
---indexStat=1 \
---bootIters=100 
+--indexStat=2 
+
+## Compute bootstrap variance estimates and coverage
+Rscript 3_computeBootstrapSE.R \
+--filename="dipperCC/results_nCRep_1000_nIter_1000.rds" \
+--indexStat=2 \
+--bootIters=100

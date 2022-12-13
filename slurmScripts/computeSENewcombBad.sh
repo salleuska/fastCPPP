@@ -4,7 +4,14 @@
 #SBATCH -o out/badMixing_variance_%j.out                 # File to which STDERR will be written, including job ID
 ######################
 
-Rscript 3_computeSE_BCEstimator.R \
---filename="newcomb/badMixing/results_nCRep_1000_nIter_1000.rds" \
+
+Rscript 3_computePluginSE.R \
+--filename="newcombBadMixing/results_nCRep_1000_nIter_1000.rds" \
+--indexStat=2 
+
+## Compute bootstrap variance estimates and coverage
+Rscript 3_computeBootstrapSE.R \
+--filename="newcombBadMixing/results_nCRep_1000_nIter_1000.rds" \
 --indexStat=2 \
---bootIters=100 
+--bootIters=100
+

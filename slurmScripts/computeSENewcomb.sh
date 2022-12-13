@@ -4,8 +4,12 @@
 #SBATCH -o out/newcomb_variance_%j.out                 # File to which STDERR will be written, including job ID
 ######################
 
+Rscript 3_computePluginSE.R \
+--filename="newcomb/results_nCRep_1000_nIter_1000.rds" \
+--indexStat=2 
 
-Rscript 3_computeSE_BCEstimator.R \
+## Compute bootstrap variance estimates and coverage
+Rscript 3_computeBootstrapSE.R \
 --filename="newcomb/results_nCRep_1000_nIter_1000.rds" \
 --indexStat=2 \
---bootIters=100 
+--bootIters=100

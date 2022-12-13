@@ -1,11 +1,15 @@
 #!/bin/bash
 #SBATCH --mail-type=ALL                       
 #SBATCH --mail-user=spaganin@hsph.harvard.edu
-#SBATCH -o out/capRecap_%j.out                 # File to which STDERR will be written, including job ID
+#SBATCH -o out/capRecap_variance_%j.out                 # File to which STDERR will be written, including job ID
 ######################
 
+Rscript 3_computePluginSE.R \
+--filename="capRecapSimulated/results_nCRep_1000_nIter_1000.rds" \
+--indexStat=2 
 
-Rscript 3_computeSE_BCEstimator.R \
---filename="capRecap_simulated/results_nCRep_1000_nIter_1000.rds" \
---indexStat=1 \
---bootIters=100 
+## Compute bootstrap variance estimates and coverage
+Rscript 3_computeBootstrapSE.R \
+--filename="capRecapSimulated/results_nCRep_1000_nIter_1000.rds" \
+--indexStat=2 \
+--bootIters=100
