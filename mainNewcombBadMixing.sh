@@ -1,5 +1,5 @@
 #############################################
-## Newcomb data 
+## Newcomb data - bad mixing
 #############################################
 #############################################
 ## 1) Compute CPPP 
@@ -7,8 +7,8 @@
 
 ## Compute CPPP
 Rscript 1_runCPPP.R \
---dirExample=newcomb \
---dataPath="newcomb/light.txt" \
+--dirExample=newcombBadMixing \
+--dataPath="newcombBadMixing/light.txt" \
 --runOriginal=TRUE \
 --nCalibrationReplicates=1000 \
 --nIterMCMC=1000 \
@@ -20,8 +20,8 @@ Rscript 1_runCPPP.R \
 ## using the same number of MCMC samples as in the original MCMC 
 
 # Rscript 1_runCPPP.R \
-# --dirExample=newcomb \
-# --dataPath="newcomb/light.txt" \
+# --dirExample=newcombBadMixing \
+# --dataPath="newcombBadMixing/light.txt" \
 # --runOriginal=FALSE \
 # --nCalibrationReplicates=1000 \
 # --nIterMCMC=5000 \
@@ -36,7 +36,7 @@ Rscript 1_runCPPP.R \
 Rscript 2_runMonteCarloCPPP.R \
 --task=1 \
 --dataPath="newcomb/light.txt" \
---dirExample=newcomb \
+--dirExample=newcombBadMixing \
 --runOriginal=TRUE \
 --nCalibrationReplicates=1000 \
 --nIterMCMC=1000 \
@@ -47,20 +47,15 @@ Rscript 2_runMonteCarloCPPP.R \
 #############################################
 ## 3) Compute CPPP variance estimates
 #############################################
-## Compute Monte Carlo baseline (baseline)
-Rscript 3_computeMCSE.R \
---dirExample="newcomb/montecarlo/" \
---indexStat=2
-
-
 ## Compute plug-in variance estimate and coverage
+
 Rscript 3_computePluginSE.R \
---filename="newcomb/results_nCRep_1000_nIter_1000.rds" \
+--filename="newcombBadMixing/results_nCRep_1000_nIter_1000.rds" \
 --indexStat=2 
 
 ## Compute bootstrap variance estimates and coverage
 Rscript 3_computeBootstrapSE.R \
---filename="newcomb/results_nCRep_1000_nIter_1000.rds" \
+--filename="newcombBadMixing/results_nCRep_1000_nIter_1000.rds" \
 --indexStat=2 \
 --bootIters=100
 
@@ -68,11 +63,4 @@ Rscript 3_computeBootstrapSE.R \
 ## 4) Plot results
 #############################################
 
-Rscript 4_plotResults.R --dirExample="newcomb" --plotTitle="Newcomb example"
-
-# Rscript 4_plotResults.R --dirExample="dipperCC" --plotTitle="Dipper example - C/C model"
-# Rscript 4_plotResults.R --dirExample="dipperTT" --plotTitle="Dipper example - T/T model"
-# Rscript 4_plotResults.R --dirExample="capRecapSimulated" --plotTitle="Simulated example - T/T model"
-# Rscript 4_plotResults.R --dirExample="newcombBadMixing" --plotTitle="Newcomb example - bad mixing"
-
-
+Rscript 4_plotResults.R --dirExample="newcombBadMixing" --plotTitle="Newcomb example - bad mixing"

@@ -1,5 +1,5 @@
 #############################################
-## Newcomb data 
+## Simulated example - capture recapture
 #############################################
 #############################################
 ## 1) Compute CPPP 
@@ -7,8 +7,8 @@
 
 ## Compute CPPP
 Rscript 1_runCPPP.R \
---dirExample=newcomb \
---dataPath="newcomb/light.txt" \
+--dirExample=capRecapSimulated \
+--dataPath="capRecapSimulated/simulatedCR.RData" \
 --runOriginal=TRUE \
 --nCalibrationReplicates=1000 \
 --nIterMCMC=1000 \
@@ -16,27 +16,14 @@ Rscript 1_runCPPP.R \
 --returnDiscrepancies=TRUE \
 --calcDisc=TRUE \
 
-## Compute "naive" CPPP
-## using the same number of MCMC samples as in the original MCMC 
-
-# Rscript 1_runCPPP.R \
-# --dirExample=newcomb \
-# --dataPath="newcomb/light.txt" \
-# --runOriginal=FALSE \
-# --nCalibrationReplicates=1000 \
-# --nIterMCMC=5000 \
-# --returnSamples=TRUE \
-# --returnDiscrepancies=TRUE \
-# --calcDisc=TRUE 
-
 #############################################
 ## 2) Compute CPPP variance via Monte Carlo 
 #############################################
 
 Rscript 2_runMonteCarloCPPP.R \
 --task=1 \
---dataPath="newcomb/light.txt" \
---dirExample=newcomb \
+--dataPath="capRecapSimulated/light.txt" \
+--dataPath="capRecapSimulated/simulatedCR.RData" \
 --runOriginal=TRUE \
 --nCalibrationReplicates=1000 \
 --nIterMCMC=1000 \
@@ -49,30 +36,23 @@ Rscript 2_runMonteCarloCPPP.R \
 #############################################
 ## Compute Monte Carlo baseline (baseline)
 Rscript 3_computeMCSE.R \
---dirExample="newcomb/montecarlo/" \
---indexStat=2
+--dirExample="capRecapSimulated/montecarlo/" \
+--indexStat=1
 
 
 ## Compute plug-in variance estimate and coverage
 Rscript 3_computePluginSE.R \
---filename="newcomb/results_nCRep_1000_nIter_1000.rds" \
---indexStat=2 
+--filename="capRecapSimulated/results_nCRep_1000_nIter_1000.rds" \
+--indexStat=1 
 
 ## Compute bootstrap variance estimates and coverage
 Rscript 3_computeBootstrapSE.R \
---filename="newcomb/results_nCRep_1000_nIter_1000.rds" \
---indexStat=2 \
+--filename="capRecapSimulated/results_nCRep_1000_nIter_1000.rds" \
+--indexStat=1 \
 --bootIters=100
 
 #############################################
 ## 4) Plot results
 #############################################
 
-Rscript 4_plotResults.R --dirExample="newcomb" --plotTitle="Newcomb example"
-
-# Rscript 4_plotResults.R --dirExample="dipperCC" --plotTitle="Dipper example - C/C model"
-# Rscript 4_plotResults.R --dirExample="dipperTT" --plotTitle="Dipper example - T/T model"
-# Rscript 4_plotResults.R --dirExample="capRecapSimulated" --plotTitle="Simulated example - T/T model"
-# Rscript 4_plotResults.R --dirExample="newcombBadMixing" --plotTitle="Newcomb example - bad mixing"
-
-
+Rscript 4_plotResults.R --dirExample="capRecapSimulated" --plotTitle="Simulated example - T/T model"
