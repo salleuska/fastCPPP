@@ -7,12 +7,19 @@ library(mcmcse) ## mcmcse
 args <- R.utils::commandArgs(asValue=TRUE)
 ################################################
 ## Possible arguments for the script
-## --dirExample	 	## directory for input/output
+## --filname	 	## path to cppp discrepancy files
 ## --indexStat		## index for the discrepancy to use (the runCalibration() function allows for multiple discrepancies)
+
+# args <- list()
+# args$filename="newcomb/results_nCRep_1000_nIter_1000.rds" 
+# args$indexStat <- 2
+
 #######################
 
 ## number of times we want to repeat the computation
-N <- 100
+# N <- 100
+N <- 500
+
 ## note: to estimate the variance for different combination of mcmc samples and calibration replicates
 ## we run one large CPPP computation, with large number of MCMC samples and calibration replicates (e.g. 1000)
 ## Example: for m = 100, r = 50 -  we consider 50 calibration replicates and the first 100 mcmc samples
@@ -72,6 +79,7 @@ cat("Computing plug-in variance estimate \n")
 
 ## for test
 # c <- m <- j <- 1
+
 for(c in 1:length(compCost)){
 	R <- compCost[c]/M
 	for(m in 1:length(M)){		
@@ -123,8 +131,10 @@ for(c in 1:length(compCost)){
 			
 			## Coverage
 
-			CILow <- cpppEst -2*sqrt(tmpVariancePlugin[j])
-			CIUp <- cpppEst +2*sqrt(tmpVariancePlugin[j])
+			CILow <- cpppHat -1.96*sqrt(tmpVariancePlugin[j])
+			CIUp <- cpppHat +1.96*sqrt(tmpVariancePlugin[j])
+			# CILow <- cpppHat -1*sqrt(tmpVariancePlugin[j])
+			# CIUp <- cpppHat +1*sqrt(tmpVariancePlugin[j])
 
 			coverage[j] <- cpppEst <= CIUp & cpppEst >= CILow
 

@@ -18,7 +18,7 @@ args <- R.utils::commandArgs(asValue=TRUE)
 # args$bootIters=100
 
 ## number of times we want to repeat the computation
-N <- 100
+N <- 500
 ## note: to estimate the variance for different combination of mcmc samples and calibration replicates
 ## we run one large CPPP computation, with large number of MCMC samples and calibration replicates (e.g. 1000)
 ## Example: for m = 100, r = 50 -  we consider 50 calibration replicates and the first 100 mcmc samples
