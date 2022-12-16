@@ -44,7 +44,7 @@ plotTitle <- args$plotTitle
 ##############################
 ## Monte carlo variance - baseline
 ##############################
-if(grepl("badMixing", dirExample)) {
+if(grepl("BadMixing", dirExample)) {
 	MCvar <- readRDS("newcomb/varianceMC.rds")
 } else {
 	MCvar <- readRDS(paste0(dirExample, "/varianceMC.rds"))
