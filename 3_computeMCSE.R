@@ -20,7 +20,7 @@ indexStat  <- as.numeric(args$indexStat)
 
 
 fileList <- list.files(dirExample)
-nMC <- length(list.files(dirExample))
+nMC <- min(c(500, length(list.files(dirExample))))
 
 # combination of replicates and MCMC iters
 ## total computational cost

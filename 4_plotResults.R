@@ -35,7 +35,7 @@ args <- R.utils::commandArgs(asValue=TRUE)
 # Rscript 4_plotResults.R --dirExample="dipperTT" --plotTitle="Dipper example - T/T model"
 # Rscript 4_plotResults.R --dirExample="capRecapSimulated" --plotTitle="Simulated example - T/T model"
 # Rscript 4_plotResults.R --dirExample="newcomb" --plotTitle="Newcomb example"
-# Rscript 4_plotResults.R --dirExample="newcomb/badMixing" --plotTitle="Newcomb example - bad mixing"
+# Rscript 4_plotResults.R --dirExample="newcombBadMixing" --plotTitle="Newcomb example - bad mixing"
 #######################
 
 dirExample <- args$dirExample
@@ -133,17 +133,17 @@ if(grepl("newcomb", dirExample)){
 }
 
 dfMC  <- reshape2::melt(sqrt(MCvar$MCvariance))
-	dfMC$ESS 		<- as.character(averageESS$value)
+dfMC$ESS 		<- as.character(averageESS$value)
 
-	dfMC$varEstimate 		<- "Monte Carlo"
-	colnames(dfMC) <- c("ComputationalCost", "m", "value", "ESS", "varEstimate")
+dfMC$varEstimate 		<- "Monte Carlo"
+colnames(dfMC) <- c("ComputationalCost", "m", "value", "ESS", "varEstimate")
 
-	dfMC$Replicates <- dfMC$ComputationalCost/dfMC$m
-	df$varEstimate <- as.factor(df$varEstimate)
+dfMC$Replicates <- dfMC$ComputationalCost/dfMC$m
+df$varEstimate <- as.factor(df$varEstimate)
 
-	dfMC$ComputationalCost <- as.factor(dfMC$ComputationalCost)
-	levels(dfMC$ComputationalCost ) = paste0("c = ", levels(dfMC$ComputationalCost ))
-	dfMC$m <- as.factor(dfMC$m)
+dfMC$ComputationalCost <- as.factor(dfMC$ComputationalCost)
+levels(dfMC$ComputationalCost ) = paste0("c = ", levels(dfMC$ComputationalCost ))
+dfMC$m <- as.factor(dfMC$m)
 
 
 
