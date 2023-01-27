@@ -5,16 +5,23 @@ args <- R.utils::commandArgs(asValue=TRUE)
 ## --dirExample
 ## --plotTitle
 
+args <- list()
+args$dirExample <- "newcomb"
+args$plotTitle <- "Newcomb example"
+
 # args <- list()
-# args$dirExample <- "newcomb"
-# args$plotTitle <- "Newcomb example"
+# args$dirExample <- "newcombBadMixing"
 
 # args <- list()
 # args$dirExample <- "dipperTT"
-# args$plotTitle <- "Dipper example - T/T model"
+
+# args <- list()
+# args$dirExample <- "dipperCC"
+
+# args <- list()
+# args$dirExample <- "capRecapSimulated"
 
 dirExample <- args$dirExample
-plotTitle <- args$plotTitle
 
 ##############################
 ## Monte carlo variance - baseline
@@ -39,6 +46,14 @@ xtable(rbind(pluginRes$averageCoverage[1, ],
 boot$averageCoverageNormal[1, ],
 boot$averageCoverageMBB[1, ]))
 
-xtable(rbind(c(t(pluginRes$averageCoverage)),  
+matrix <- rbind(c(t(pluginRes$averageCoverage)), 
 	c(t(boot$averageCoverageNormal)), 
-c(t(boot$averageCoverageMBB))))
+	c(t(boot$averageCoverageMBB)))
+
+rownames(matrix) <- c("Plug-in" , "Bootstrap - MBB", "Bootstrap - Normal")
+
+xtable(matrix, digits = 3)
+
+
+
+
