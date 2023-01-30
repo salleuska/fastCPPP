@@ -13,7 +13,7 @@ dfTT <- data.frame(x = tt$repPPP[1,])
 plotTT <- ggplot(dfTT, aes(x=x)) + 
 	geom_histogram(aes(x, after_stat(density)), position="identity", alpha=0.5,  color="gray20", fill="white")+
 	geom_density(alpha=0.4, color =  "#E69F00", fill =  "#E69F00", bounds = c(0,1))+
-	labs(title="Dipper T/T - null distributon of ppp",x="ppp", y = "Density")+
+	labs(title="Dipper example - T/T model \nNull distributon of ppp",x="ppp", y = "Density")+
 	geom_vline(aes(xintercept = tt$obsPPP[1]), col = "red") + 
 	theme_classic() + 
 	 coord_cartesian(xlim = c(0, 1))
@@ -31,7 +31,7 @@ df <- data.frame(x = cc$repPPP[1,])
 plotCC <- ggplot(df, aes(x=x)) + 
 	geom_histogram(aes(x, after_stat(density)), position="identity", alpha=0.5,  color="gray20", fill="white")+
 	geom_density(alpha=0.4, color =  "#E69F00", fill =  "#E69F00", bounds = c(0,1))+
-	labs(title="Dipper C/C- null distributon of ppp",x="ppp", y = "Density")+
+	labs(title="Dipper example - C/C model \nNull distributon of ppp",x="ppp", y = "Density")+
 	geom_vline(aes(xintercept = cc$obsPPP[1]), col = "red") + 
 	theme_classic() + 
 	 coord_cartesian(xlim = c(0, 1))
@@ -52,7 +52,7 @@ dfTT <- data.frame(x = res$repPPP[2,])
 plotTT <- ggplot(dfTT, aes(x=x)) + 
 	geom_histogram(aes(x, after_stat(density)), position="identity", alpha=0.5,  color="gray20", fill="white")+
 	geom_density(alpha=0.4, color =  "#E69F00", fill =  "#E69F00", bounds = c(0,1))+
-	labs(title="Newcomb - null distributon of ppp",x="ppp", y = "Density")+
+	labs(title="Newcomb example - good mixing \nNull distributon of ppp",x="ppp", y = "Density")+
 	geom_vline(aes(xintercept = res$obsPPP[2]), col = "red") + 
 	theme_classic()  + 
 	 coord_cartesian(xlim = c(0, 1))
@@ -71,7 +71,7 @@ dfTT <- data.frame(x = res$repPPP[2,])
 plotTT <- ggplot(dfTT, aes(x=x)) + 
 	geom_histogram(aes(x, after_stat(density)), position="identity", alpha=0.5,  color="gray20", fill="white")+
 	geom_density(alpha=0.4, color =  "#E69F00", fill =  "#E69F00", bounds = c(0,1))+
-	labs(title="Newcomb - bad mixing - null distributon of ppp",x="ppp", y = "Density")+
+	labs(title="Newcomb example - bad mixing \nNull distributon of ppp",x="ppp", y = "Density")+
 	geom_vline(aes(xintercept = res$obsPPP[2]), col = "red") + 
 	theme_classic()  + 
 	 coord_cartesian(xlim = c(0, 1))
@@ -91,7 +91,7 @@ dfTT <- data.frame(x = res$repPPP[1,])
 plotTT <- ggplot(dfTT, aes(x=x)) + 
 	geom_histogram(aes(x, after_stat(density)), position="identity", alpha=0.5,  color="gray20", fill="white")+
 	geom_density(alpha=0.4, color =  "#E69F00", fill =  "#E69F00", bounds = c(0,1))+
-	labs(title="Simulated example - T/T model - null distributon of ppp",x="ppp", y = "Density")+
+	labs(title="Simulated example - T/T model \nNull distributon of ppp",x="ppp", y = "Density")+
 	geom_vline(aes(xintercept = res$obsPPP[1]), col = "red") + 
 	theme_classic()  + 
 	 coord_cartesian(xlim = c(0, 1))

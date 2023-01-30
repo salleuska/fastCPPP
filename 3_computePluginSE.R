@@ -66,6 +66,7 @@ mcVarPlugin <- array(0, dim = c(length(compCost), length(M)))
 tmpMean <- numeric(N)
 tmpVarApprox <- numeric(N)
 tmpVariancePlugin <- numeric(N)
+tmpAverageESS <- numeric(N)
 coverage <- numeric(N)
 
 fMat <- array(0, dim = c(N, 100))
@@ -129,6 +130,9 @@ for(c in 1:length(compCost)){
 
 			tmpVariancePlugin[j] <- (term1 + term2)/R[m]
 			
+
+			## ESS (transfer method)
+			tmpAverageESS[j] <- mean(tauTransfer/M[m])
 			## Coverage
 
 			CILow <- cpppHat -1.96*sqrt(tmpVariancePlugin[j])
@@ -147,7 +151,7 @@ for(c in 1:length(compCost)){
 		variancePlugin[c,m] 	<- mean(tmpVariancePlugin)
 		mcVarPlugin[c,m] 	<- var(tmpVariancePlugin)
 
-		averageESSTransfer[c,m] <- mean(tauTransfer/M[m])
+		averageESSTransfer[c,m] <- mean(tmpAverageESS)
 	}
 }
 

@@ -68,11 +68,6 @@ Rscript 3_computeBootstrapSE.R \
 ## 4) Plot results
 #############################################
 
-Rscript 4_plotResults.R --dirExample="newcomb" --plotTitle="Newcomb example"
-
-# Rscript 4_plotResults.R --dirExample="dipperCC" --plotTitle="Dipper example - C/C model"
-# Rscript 4_plotResults.R --dirExample="dipperTT" --plotTitle="Dipper example - T/T model"
-# Rscript 4_plotResults.R --dirExample="capRecapSimulated" --plotTitle="Simulated example - T/T model"
-# Rscript 4_plotResults.R --dirExample="newcombBadMixing" --plotTitle="Newcomb example - bad mixing"
+Rscript 4_plotResults.R --dirExample="newcomb" --plotTitle="Newcomb example - good mixing"
 
 
