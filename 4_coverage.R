@@ -3,11 +3,9 @@ args <- R.utils::commandArgs(asValue=TRUE)
 #######################
 ## set up args for the  script 
 ## --dirExample
-## --plotTitle
 
-args <- list()
-args$dirExample <- "newcomb"
-args$plotTitle <- "Newcomb example"
+# args <- list()
+# args$dirExample <- "newcomb"
 
 # args <- list()
 # args$dirExample <- "newcombBadMixing"
@@ -21,11 +19,12 @@ args$plotTitle <- "Newcomb example"
 # args <- list()
 # args$dirExample <- "capRecapSimulated"
 
-dirExample <- args$dirExample
 
 ##############################
 ## Monte carlo variance - baseline
 ##############################
+dirExample <- args$dirExample
+
 if(grepl("BadMixing", dirExample)) {
 	MCvar <- readRDS("newcomb/varianceMC.rds")
 } else {
