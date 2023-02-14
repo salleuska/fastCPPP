@@ -147,7 +147,6 @@ for(r in 1:length(compCost)){
 
 			coverageNormal[k] <- cpppEst <= CIUpNormal & cpppEst >= CILowNormal
 
-
 		}
 
 		varianceMBB[r,m] <- mean(tmpVarMBB)
@@ -168,6 +167,8 @@ dimnames(varianceMBB) <- list(compCost, M)
 dimnames(varianceNormal) <- list(compCost, M)
 dimnames(mcVarMBB) <- list(compCost, M)
 dimnames(mcVarNormal) <- list(compCost, M)
+dimnames(averageCoverageNormal) <- list(compCost, M)
+dimnames(averageCoverageMBB) <- list(compCost, M)
 
 
 resBootVariance <- list(cpppEst = cpppEst, 
