@@ -5,8 +5,8 @@
 ######################
 
 Rscript 1_runCPPP.R  \
---dirExample=dipperCC \
---dataPath="dipperCC/dipperData.RData" \
+--dirExample=sec6_examples/dipperCC \
+--dataPath="sec6_examples/dipperCC/dipperData.RData" \
 --runOriginal=FALSE \
 --nCalibrationReplicates=1000 \
 --nIterMCMC=1000 \
@@ -15,8 +15,8 @@ Rscript 1_runCPPP.R  \
 --calcDisc=TRUE
 
 Rscript 1_runCPPP.R \
---dataPath="dipperCC/dipperData.RData" \
---dirExample=dipperCC \
+--dataPath="sec6_examples/dipperCC/dipperData.RData" \
+--dirExample=sec6_examples/dipperCC \
 --runOriginal=FALSE \
 --nCalibrationReplicates=1000 \
 --nIterMCMC=10000 \

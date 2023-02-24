@@ -5,8 +5,8 @@
 ######################
 
 Rscript 1_runCPPP.R  \
---dirExample=capRecapSimulated \
---dataPath="capRecapSimulated/simulatedCR.RData" \
+--dirExample=sec6_examples/capRecapSimulated \
+--dataPath="sec6_examples/capRecapSimulated/simulatedCR.RData" \
 --runOriginal=FALSE \
 --nCalibrationReplicates=1000 \
 --nIterMCMC=1000 \

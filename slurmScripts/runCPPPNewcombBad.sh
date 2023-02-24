@@ -6,8 +6,8 @@
 
 ## newcomb example
 Rscript 1_runCPPP.R  \
---dirExample=newcombBadMixing \
---dataPath="newcomb/light.txt" \
+--dirExample=sec6_examples/newcombBadMixing \
+--dataPath="sec6_examples/newcomb/light.txt" \
 --runOriginal=FALSE \
 --nCalibrationReplicates=1000 \
 --nIterMCMC=1000 \

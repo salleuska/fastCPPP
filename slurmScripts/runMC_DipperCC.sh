@@ -9,8 +9,8 @@
 ## dipper CC example
 Rscript 2_runMonteCarloCPPP.R \
 --task=$SLURM_ARRAY_TASK_ID \
---dirExample=dipperCC \
---dataPath="dipperCC/dipperData.RData" \
+--dirExample=sec6_examples/dipperCC \
+--dataPath="sec6_examples/dipperCC/dipperData.RData" \
 --runOriginal=FALSE \
 --nCalibrationReplicates=1000 \
 --nIterMCMC=1000 \

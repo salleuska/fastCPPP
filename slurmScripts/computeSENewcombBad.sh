@@ -6,12 +6,12 @@
 
 
 Rscript 3_computePluginSE.R \
---filename="newcombBadMixing/results_nCRep_1000_nIter_1000.rds" \
+--filename="sec6_examples/newcombBadMixing/results_nCRep_1000_nIter_1000.rds" \
 --indexStat=2 
 
 # ## Compute bootstrap variance estimates and coverage
 # Rscript 3_computeBootstrapSE.R \
-# --filename="newcombBadMixing/results_nCRep_1000_nIter_1000.rds" \
+# --filename="sec6_examples/newcombBadMixing/results_nCRep_1000_nIter_1000.rds" \
 # --indexStat=2 \
 # --bootIters=100
 

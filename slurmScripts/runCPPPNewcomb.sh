@@ -6,8 +6,8 @@
 
 ## newcomb example
 Rscript 1_runCPPP.R \
---dirExample=newcomb \
---dataPath="newcomb/light.txt" \
+--dirExample=sec6_examples/newcomb \
+--dataPath="sec6_examples/newcomb/light.txt" \
 --runOriginal=FALSE \
 --nCalibrationReplicates=1000 \
 --nIterMCMC=1000 \
@@ -16,8 +16,8 @@ Rscript 1_runCPPP.R \
 --calcDisc=TRUE \
 
 Rscript 1_runCPPP.R \
---dirExample=newcomb \
---dataPath="newcomb/light.txt" \
+--dirExample=sec6_examples/newcomb \
+--dataPath="sec6_examples/newcomb/light.txt" \
 --runOriginal=FALSE \
 --nCalibrationReplicates=1000 \
 --nIterMCMC=5000 \

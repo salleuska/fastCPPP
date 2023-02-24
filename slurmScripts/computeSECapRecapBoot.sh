@@ -5,11 +5,11 @@
 ######################
 
 # Rscript 3_computePluginSE.R \
-# --filename="capRecapSimulated/results_nCRep_1000_nIter_1000.rds" \
+# --filename="sec6_examples/capRecapSimulated/results_nCRep_1000_nIter_1000.rds" \
 # --indexStat=1 
 
 ## Compute bootstrap variance estimates and coverage
 Rscript 3_computeBootstrapSE.R \
---filename="capRecapSimulated/results_nCRep_1000_nIter_1000.rds" \
+--filename="sec6_examples/capRecapSimulated/results_nCRep_1000_nIter_1000.rds" \
 --indexStat=1 \
 --bootIters=100

@@ -4,20 +4,23 @@ args <- R.utils::commandArgs(asValue=TRUE)
 ## set up args for the  script 
 ## --dirExample
 
+rm(list = ls())
 # args <- list()
 # args$dirExample <- "newcomb"
 
 # args <- list()
 # args$dirExample <- "newcombBadMixing"
 
-# args <- list()
-# args$dirExample <- "dipperTT"
 
 # args <- list()
 # args$dirExample <- "dipperCC"
 
 # args <- list()
-# args$dirExample <- "capRecapSimulated"
+# args$dirExample <- "dipperTT"
+
+
+args <- list()
+args$dirExample <- "capRecapSimulated"
 
 
 ##############################
@@ -35,7 +38,8 @@ if(grepl("BadMixing", dirExample)) {
 trueCPPP <- MCvar$cpppEstAll
 
 pluginRes <- readRDS(paste0(dirExample, "/variancePlugin.rds"))
-boot <- readRDS(paste0(dirExample, "/varianceBootstrap.rds"))
+# boot <- readRDS(paste0(dirExample, "/varianceBootstrap.rds"))
+boot <- readRDS(paste0(dirExample, "/varianceBootstrap_alternative.rds"))
 
 pluginRes$averageCoverage
 boot$averageCoverageNormal
@@ -45,9 +49,9 @@ xtable(rbind(pluginRes$averageCoverage[1, ],
 boot$averageCoverageNormal[1, ],
 boot$averageCoverageMBB[1, ]))
 
-matrix <- rbind(c(t(pluginRes$averageCoverage)), 
-	c(t(boot$averageCoverageNormal)), 
-	c(t(boot$averageCoverageMBB)))
+matrix <- rbind(c(t(pluginRes$averageCoverage)),  
+	c(t(boot$averageCoverageMBB)),
+c(t(boot$averageCoverageNormal)))
 
 rownames(matrix) <- c("Plug-in" , "Bootstrap - MBB", "Bootstrap - Normal")
 

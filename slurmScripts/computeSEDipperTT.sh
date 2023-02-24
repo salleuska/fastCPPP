@@ -6,11 +6,11 @@
 
 
 Rscript 3_computePluginSE.R \
---filename="dipperTT/results_nCRep_1000_nIter_1000.rds" \
+--filename="sec6_examples/dipperTT/results_nCRep_1000_nIter_1000.rds" \
 --indexStat=1
 
 # ## Compute bootstrap variance estimates and coverage
 # Rscript 3_computeBootstrapSE.R \
-# --filename="dipperTT/results_nCRep_1000_nIter_1000.rds" \
+# --filename="sec6_examples/dipperTT/results_nCRep_1000_nIter_1000.rds" \
 # --indexStat=1 \
 # --bootIters=100

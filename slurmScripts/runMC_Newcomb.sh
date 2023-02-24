@@ -9,8 +9,8 @@
 ## newcomb example
 Rscript 2_runMonteCarloCPPP.R \
 --task=$SLURM_ARRAY_TASK_ID \
---dataPath="newcomb/light.txt" \
---dirExample=newcomb \
+--dataPath="sec6_examples/newcomb/light.txt" \
+--dirExample=sec6_examples/newcomb \
 --runOriginal=TRUE \
 --nCalibrationReplicates=1000 \
 --nIterMCMC=1000 \

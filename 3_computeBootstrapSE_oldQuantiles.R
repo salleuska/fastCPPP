@@ -77,7 +77,7 @@ cpppBootMBB    <- numeric(bootIters)
 
 obsPPP <- res$obsPPP[indexStat]
 
-cat("Start bootstrap variance estimates \n")
+cat("Start boostrap variance estimates \n")
 
 # r <- m <- k <- 1
 for(r in 1:length(compCost)){	
@@ -87,11 +87,6 @@ for(r in 1:length(compCost)){
 		for(k in 1:N){
 
 			discList <- res$repDisc[sample(1:rTOT, R[m], replace = F)]
-
-			pppVecOriginal <- unlist(lapply(discList, function(x) 
-				(sum(x[indexStat,1:M[m],2] >= x[indexStat,1:M[m],1]) + 0.5)/(M[m] + 1)))
-			
- 			cpppHat <- mean(pppVecOriginal <= obsPPP)
 
 			for(j in 1:bootIters){
 
@@ -138,24 +133,17 @@ for(r in 1:length(compCost)){
 				if(j %% 10 == 0) cat("boot iter - ", j, "\n")
 			}
 
-			## Here we calculate intervals in the same way as for the plugin-case
-
 			tmpVarMBB[k] <- var(cpppBootMBB)
 			tmpNormal[k] <- var(cpppBootNormal)
 
-			CILowMBB <- cpppHat -1.96*sqrt(tmpVarMBB[j])
-			CIUpBB <- cpppHat +1.96*sqrt(tmpVarMBB[j])
 
-			# CILowMBB <- quantile(cpppBootMBB, 0.025)
-			# CIUpBB <- quantile(cpppBootMBB, 0.975)
+			CILowMBB <- quantile(cpppBootMBB, 0.025)
+			CIUpBB <- quantile(cpppBootMBB, 0.975)
 
 			coverageMBB[k] <- cpppEst <= CIUpBB & cpppEst >= CILowMBB
 
-			CILowNormal <- cpppHat -1.96*sqrt(tmpNormal[j])
-			CIUpNormal <- cpppHat +1.96*sqrt(tmpNormal[j])
-
-			# CILowNormal <- quantile(cpppBootNormal, 0.025)
-			# CIUpNormal <- quantile(cpppBootNormal, 0.975)
+			CILowNormal <- quantile(cpppBootNormal, 0.025)
+			CIUpNormal <- quantile(cpppBootNormal, 0.975)
 
 			coverageNormal[k] <- cpppEst <= CIUpNormal & cpppEst >= CILowNormal
 
@@ -193,7 +181,7 @@ resBootVariance <- list(cpppEst = cpppEst,
 
 cat("Saving boostrap variance estimates \n")
 
-saveRDS(resBootVariance, file = paste0(dirExample, "/varianceBootstrap_alternative.rds" ))
+saveRDS(resBootVariance, file = paste0(dirExample, "/varianceBootstrap.rds" ))
 
 
 
