@@ -7,8 +7,8 @@
 
 ## Compute CPPP
 Rscript 1_runCPPP.R \
---dirExample=dipperTT \
---dataPath="dipperTT/dipperData.RData" \
+--dirExample=sec6_examples/dipperTT \
+--dataPath="sec6_examples/dipperTT/dipperData.RData" \
 --runOriginal=TRUE \
 --nCalibrationReplicates=1000 \
 --nIterMCMC=1000 \
@@ -20,8 +20,8 @@ Rscript 1_runCPPP.R \
 ## using the same number of MCMC samples as in the original MCMC 
 
 # Rscript 1_runCPPP.R \
-# --dirExample=dipperTT \
-# --dataPath="dipperTT/dipperData.RData" \
+# --dirExample=sec6_examples/dipperTT \
+# --dataPath="sec6_examples/dipperTT/dipperData.RData" \
 # --runOriginal=TRUE \
 # --nCalibrationReplicates=1000 \
 # --nIterMCMC=10000 \
@@ -35,8 +35,8 @@ Rscript 1_runCPPP.R \
 
 Rscript 2_runMonteCarloCPPP.R \
 --task=1 \
---dataPath="dipperTT/dipperData.txt" \
---dirExample=dipperTT \
+--dataPath="sec6_examples/dipperTT/dipperData.txt" \
+--dirExample=sec6_examples/dipperTT \
 --runOriginal=TRUE \
 --nCalibrationReplicates=1000 \
 --nIterMCMC=1000 \
@@ -49,18 +49,18 @@ Rscript 2_runMonteCarloCPPP.R \
 #############################################
 ## Compute Monte Carlo baseline (baseline)
 Rscript 3_computeMCSE.R \
---dirExample="dipperTT/montecarlo/" \
+--dirExample="sec6_examples/dipperTT/montecarlo/" \
 --indexStat=1
 
 
 ## Compute plug-in variance estimate and coverage
 Rscript 3_computePluginSE.R \
---filename="dipperTT/results_nCRep_1000_nIter_1000.rds" \
+--filename="sec6_examples/dipperTT/results_nCRep_1000_nIter_1000.rds" \
 --indexStat=1 
 
 ## Compute bootstrap variance estimates and coverage
 Rscript 3_computeBootstrapSE.R \
---filename="dipperTT/results_nCRep_1000_nIter_1000.rds" \
+--filename="sec6_examples/dipperTT/results_nCRep_1000_nIter_1000.rds" \
 --indexStat=1 \
 --bootIters=100
 
@@ -68,5 +68,5 @@ Rscript 3_computeBootstrapSE.R \
 ## 4) Plot results
 #############################################
 
-Rscript 4_plotResults.R --dirExample="dipperTT" --plotTitle="Dipper example - T/T model"
+Rscript 4_plotResults.R --dirExample="sec6_examples/dipperTT" --plotTitle="Dipper example - T/T model"
 

@@ -77,7 +77,18 @@ allPlots <- cowplot::plot_grid(
       theme(legend.position = "right")), 
    rel_widths = c(.85, .15), nrow=1)
 
+allPlots <- cowplot::plot_grid(
+   cowplot::plot_grid(
+    plotList[[1]] + theme(legend.position = "none") + coord_cartesian(ylim = c(0,3)),
+    plotList[[2]] + theme(legend.position = "none") + coord_cartesian(ylim = c(0,3)),
+    plotList[[3]] + theme(legend.position = "none") + coord_cartesian(ylim = c(0,3)),
+    nrow = 1, align = "h"
+   ),
+   cowplot::get_legend(plotList[[1]]  + 
+      theme(legend.position = "bottom", legend.title=element_text(size=rel(1.3)) , legend.text=element_text(size=rel(1.2)))), 
+   rel_heights =  c(.85, .15), nrow=2)
+
 
 save_plot("figures/Fig1_cpppScenarios.png", allPlots, 
-		  base_height = 4, base_width = 5, ncol = 3)
+		  base_height = 5, base_width = 5, ncol = 3)
 

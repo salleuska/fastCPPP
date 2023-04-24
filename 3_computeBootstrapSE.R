@@ -13,7 +13,7 @@ args <- R.utils::commandArgs(asValue=TRUE)
 ## --bootIters      ## numer of bootstrap replications
 #######################
 # args <- list()
-# args$filename="newcomb/results_nCRep_1000_nIter_1000.rds" 
+# args$filename="sec6_examples/newcomb/results_nCRep_1000_nIter_1000.rds" 
 # args$indexStat=2 
 # args$bootIters=100
 
@@ -46,9 +46,9 @@ M <- c(50, 100, 200, 500)
 
 rTOT <- length(res$repDisc)
 
-###############################
-## variance estimate via bootstrap
-###############################
+#######################################
+## variance estimate via bootstrap   ##
+#######################################
 ## Compute differences between discrepancy values at each iteration
 deltaObs <- res$obsDisc[indexStat,,2] - res$obsDisc[indexStat,,1]
 ## original number of MCMC
@@ -78,7 +78,8 @@ cpppBootMBB    <- numeric(bootIters)
 obsPPP <- res$obsPPP[indexStat]
 
 cat("Start bootstrap variance estimates \n")
-
+# r <- 1
+# m <- 3
 # r <- m <- k <- 1
 for(r in 1:length(compCost)){	
 	R <- compCost[r]/M

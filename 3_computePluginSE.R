@@ -7,17 +7,16 @@ library(mcmcse) ## mcmcse
 args <- R.utils::commandArgs(asValue=TRUE)
 ################################################
 ## Possible arguments for the script
-## --filname	 	## path to cppp discrepancy files
+## --filename	 	## path to cppp discrepancy files
 ## --indexStat		## index for the discrepancy to use (the runCalibration() function allows for multiple discrepancies)
 
 # args <- list()
-# args$filename="newcomb/results_nCRep_1000_nIter_1000.rds" 
+# args$filename="sec6_examples/newcomb/results_nCRep_1000_nIter_1000.rds" 
 # args$indexStat <- 2
 
 #######################
 
 ## number of times we want to repeat the computation
-# N <- 100
 N <- 500
 
 ## note: to estimate the variance for different combination of mcmc samples and calibration replicates

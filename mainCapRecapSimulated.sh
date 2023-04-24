@@ -7,8 +7,8 @@
 
 ## Compute CPPP
 Rscript 1_runCPPP.R \
---dirExample=capRecapSimulated \
---dataPath="capRecapSimulated/simulatedCR.RData" \
+--dirExample=sec6_examples/capRecapSimulated \
+--dataPath="sec6_examples/capRecapSimulated/simulatedCR.RData" \
 --runOriginal=TRUE \
 --nCalibrationReplicates=1000 \
 --nIterMCMC=1000 \
@@ -22,8 +22,8 @@ Rscript 1_runCPPP.R \
 
 Rscript 2_runMonteCarloCPPP.R \
 --task=1 \
---dataPath="capRecapSimulated/light.txt" \
---dataPath="capRecapSimulated/simulatedCR.RData" \
+--dataPath="sec6_examples/capRecapSimulated/light.txt" \
+--dataPath="sec6_examples/capRecapSimulated/simulatedCR.RData" \
 --runOriginal=TRUE \
 --nCalibrationReplicates=1000 \
 --nIterMCMC=1000 \
@@ -36,18 +36,18 @@ Rscript 2_runMonteCarloCPPP.R \
 #############################################
 ## Compute Monte Carlo baseline (baseline)
 Rscript 3_computeMCSE.R \
---dirExample="capRecapSimulated/montecarlo/" \
+--dirExample="sec6_examples/capRecapSimulated/montecarlo/" \
 --indexStat=1
 
 
 ## Compute plug-in variance estimate and coverage
 Rscript 3_computePluginSE.R \
---filename="capRecapSimulated/results_nCRep_1000_nIter_1000.rds" \
+--filename="sec6_examples/capRecapSimulated/results_nCRep_1000_nIter_1000.rds" \
 --indexStat=1 
 
 ## Compute bootstrap variance estimates and coverage
 Rscript 3_computeBootstrapSE.R \
---filename="capRecapSimulated/results_nCRep_1000_nIter_1000.rds" \
+--filename="sec6_examples/capRecapSimulated/results_nCRep_1000_nIter_1000.rds" \
 --indexStat=1 \
 --bootIters=100
 
@@ -55,4 +55,4 @@ Rscript 3_computeBootstrapSE.R \
 ## 4) Plot results
 #############################################
 
-Rscript 4_plotResults.R --dirExample="capRecapSimulated" --plotTitle="Simulated example - T/T model"
+Rscript 4_plotResults.R --dirExample="sec6_examples/capRecapSimulated" --plotTitle="Simulated example - T/T model"
