@@ -7,7 +7,7 @@ args <- R.utils::commandArgs(asValue=TRUE)
 rm(list = ls())
 
 args <- list()
-args$dirExample <- "test/dipperTT"
+args$dirExample <- "test/capRecap"
 
 # args <- list()
 # args$dirExample <- "sec6_examples/newcomb"
