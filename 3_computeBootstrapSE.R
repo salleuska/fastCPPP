@@ -65,27 +65,27 @@ mcVarNormal <- array(0, dim = c(length(compCost), length(M)))
 
 #N <- 100
 
-tmpVarMBB <- numeric(N)
-tmpNormal <- numeric(N)
-
-coverageMBB <- numeric(N)
-coverageNormal <- numeric(N)
 
 
-cpppBootNormal <- numeric(bootIters)
-cpppBootMBB    <- numeric(bootIters)
+
 
 obsPPP <- res$obsPPP[indexStat]
 
 cat("Start bootstrap variance estimates \n")
 # r <- 1
-# m <- 3
+# m <- 4
+# k <- 1
 # r <- m <- k <- 1
 for(r in 1:length(compCost)){	
 	R <- compCost[r]/M
 	for(m in 1:length(M)){
 	cat(paste0("comp cost = ", compCost[r], " MCMCsamples = ", M[m], " Cal. Rep = ", R[m], " \n"))
 		for(k in 1:N){
+			tmpVarMBB <- numeric(N)
+			tmpNormal <- numeric(N)
+
+			coverageMBB <- numeric(N)
+			coverageNormal <- numeric(N)
 
 			discList <- res$repDisc[sample(1:rTOT, R[m], replace = F)]
 
@@ -95,6 +95,9 @@ for(r in 1:length(compCost)){
  			cpppHat <- mean(pppVecOriginal <= obsPPP)
 
 			for(j in 1:bootIters){
+				
+				cpppBootNormal <- numeric(bootIters)
+				cpppBootMBB    <- numeric(bootIters)
 
 				indexBoot <- sample(1:R[m], R[m], replace = T)
 
@@ -144,16 +147,16 @@ for(r in 1:length(compCost)){
 			tmpVarMBB[k] <- var(cpppBootMBB)
 			tmpNormal[k] <- var(cpppBootNormal)
 
-			CILowMBB <- cpppHat -1.96*sqrt(tmpVarMBB[j])
-			CIUpBB <- cpppHat +1.96*sqrt(tmpVarMBB[j])
+			CILowMBB <- cpppHat -1.96*sqrt(tmpVarMBB[k])
+			CIUpBB <- cpppHat +1.96*sqrt(tmpVarMBB[k])
 
 			# CILowMBB <- quantile(cpppBootMBB, 0.025)
 			# CIUpBB <- quantile(cpppBootMBB, 0.975)
 
 			coverageMBB[k] <- cpppEst <= CIUpBB & cpppEst >= CILowMBB
 
-			CILowNormal <- cpppHat -1.96*sqrt(tmpNormal[j])
-			CIUpNormal <- cpppHat +1.96*sqrt(tmpNormal[j])
+			CILowNormal <- cpppHat -1.96*sqrt(tmpNormal[k])
+			CIUpNormal <- cpppHat +1.96*sqrt(tmpNormal[k])
 
 			# CILowNormal <- quantile(cpppBootNormal, 0.025)
 			# CIUpNormal <- quantile(cpppBootNormal, 0.975)
