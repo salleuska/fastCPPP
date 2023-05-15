@@ -1,34 +1,12 @@
 library(ggplot2)
-# library(ggpubr)
-# library(ggsci)
 library(latex2exp)
 library(cowplot)
 
 args <- R.utils::commandArgs(asValue=TRUE)
 #######################
 ## set up args for the  script 
-## --dirExample
-## --plotTitle
-
-# args <- list()
-# args$dirExample <- "newcomb"
-# args$plotTitle <- "Newcomb example"
-
-# args <- list()
-# args$dirExample <- "newcomb/badMixing/"
-# args$plotTitle <- "Newcomb example - bad mixing"
-
-# args <- list()
-# args$dirExample <- "dipperTT"
-# args$plotTitle <- "Dipper example - T/T model"
-
-# args <- list()
-# args$dirExample <- "capRecapSimulated"
-# args$plotTitle <- "Simulated example - T/T model"
-
-# args <- list()
-# args$dirExample <- "dipperCC"
-# args$plotTitle <- "Dipper example - C/C model"
+## --dirExample   directory
+## --plotTitle	  title for the plot
 #######################
 # # Example call from bash
 # Rscript 4_plotResults.R --dirExample="dipperCC" --plotTitle="Dipper example - C/C model"

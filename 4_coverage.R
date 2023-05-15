@@ -6,9 +6,6 @@ args <- R.utils::commandArgs(asValue=TRUE)
 
 rm(list = ls())
 
-args <- list()
-args$dirExample <- "test/capRecap"
-
 # args <- list()
 # args$dirExample <- "sec6_examples/newcomb"
 
@@ -42,8 +39,7 @@ if(grepl("BadMixing", dirExample)) {
 trueCPPP <- MCvar$cpppEstAll
 
 pluginRes <- readRDS(paste0(dirExample, "/variancePlugin.rds"))
-# boot <- readRDS(paste0(dirExample, "/varianceBootstrap.rds"))
-boot <- readRDS(paste0(dirExample, "/varianceBootstrap_alternative.rds"))
+boot <- readRDS(paste0(dirExample, "/varianceBootstrap.rds"))
 
 pluginRes$averageCoverage
 boot$averageCoverageNormal
