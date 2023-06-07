@@ -1,9 +1,10 @@
+#######################
 ## This script perform calulation of the CPPP
 ## for a given example
 #######################
 args <- R.utils::commandArgs(asValue=TRUE)
-
-## set up args for the  script 
+#######################
+## Arguments for the scriptss 
 ## --dirExample               ## directory for input/output
 ## --dataPath                 ## path to data
 ## --runOriginal              ## if TRUE then run first original MCMC (details in the model scripts)
@@ -13,17 +14,6 @@ args <- R.utils::commandArgs(asValue=TRUE)
 ## --returnDiscrepancies      ## if TRUE return all computed discrepancies
 ## --calcDisc                 ## if TRUE compute PPP
 #######################
-## Example
-# args <- list()
-# args$dirExample="newcomb" 
-# args$dataPath="newcomb/light.txt" 
-# args$runOriginal=TRUE 
-# args$nCalibrationReplicates=1000 
-# args$nIterMCMC=1000 
-# args$returnSamples=TRUE 
-# args$returnDiscrepancies=TRUE 
-# args$calcDisc=TRUE 
-#######################
 ##---------------------------------------- ##
 library(nimble)
 
@@ -32,10 +22,10 @@ discrepancyFunctions <- NULL
 discrepancyFunctionsArgs <- NULL
 
 ##  read CPPP code
-source("calculateCPPP.R")
+source("CPPPfunctions/calculateCPPP.R")
 
 ##  read registeredDiscrepancy
-source("registeredDiscrepancies.R")
+source("CPPPfunctions/registeredDiscrepancies.R")
 ##---------------------------------------- ##
 if(is.null(args$dirExample)){
 	stop("provide directory path for the example to run")

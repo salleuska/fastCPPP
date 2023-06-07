@@ -36,9 +36,9 @@ install.packages("R2ucare")  ## for function marray - capture-recapture example
 ## Folders 
 
 ```bash
-├── figures						## output figures
+├── figures						## output folder for figures
 ├── sec4_betaBinomialExample    ## code to reproduce example and plot in section 4
-├── sec6_examples				## examples in section 6	
+├── sec6_examples				## containts one folder for each examples in section 6	
 └── slurmScripts				## scripts for computing cluster using SLURM
 ```
 
@@ -49,12 +49,12 @@ The following R files are parametrized so that the same script can be used for d
 ```bash
 
 ├── 1_runCPPP.R 					  ## run cppp procedure for one example
-├── 2_runMonteCarloCPPP.R 		      ## rum cppp procedure multiple times 
-├── 3_computeBootstrapSE.R            ## compute standard error of cppp via Bootstrap
-├── 3_computeMCSE.R                   ## compute standard error of cppp via monte carlo 
-├── 3_computePluginSE.R               ## compute standard error of cppp via plugin estimate
-├── 4_coverage.R                      ## extract results in terms of coverate
-├── 4_plotPPPdistr.R                  ## plot the distribution of the ppp for the example
+├── 2_runMonteCarloCPPP.R 		      ## run the cppp procedure multiple times for brute force Monte Carlo estimation
+├── 3_computeBootstrapSE.R            ## compute Bootstrap estimates of the cppp standard error + coverage
+├── 3_computeMCSE.R                   ## compute brute force estimate of the cppp standard error via Monte carlo 
+├── 3_computePluginSE.R               ## compute Plug-in estimates of the cppp standard error + coverage
+├── 4_coverage.R                      ## extract results for coverage e
+├── 4_plotPPPdistr.R                  ## plot the distribution of the ppp for the examples
 ├── 4_plotResults.R                   ## reproduce plots in Section6 with cppp estimates and variance estimates
 ├── registeredDiscrepancies.R         ## functions that calculate discrepancies
 

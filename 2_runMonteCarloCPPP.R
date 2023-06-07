@@ -22,10 +22,10 @@ discrepancyFunctions <- NULL
 discrepancyFunctionsArgs <- NULL
 
 ##  read CPPP code
-source("calculateCPPP.R")
+source("CPPPfunctions/calculateCPPP.R")
 
 ##  read registeredDiscrepancy
-source("registeredDiscrepancies.R")
+source("CPPPfunctions/registeredDiscrepancies.R")
 ##---------------------------------------- ##
 if(is.null(args$dirExample)){
 	stop("provide directory path for the example to run")
