@@ -37,7 +37,7 @@ install.packages("R2ucare")  ## for function marray - capture-recapture example
 
 ```bash
 ├── CPPPfunctions             ## Containts the main function for the cppp procedure
-├── figures	                  ## output folder for figures
+├── figures                   ## output folder for figures
 ├── sec4_betaBinomialExample  ## code to reproduce example and plot in Section 4
 ├── sec6_examples             ## containts one folder for each examples in Section 6	
 └── slurmScripts              ## scripts for computing cluster using SLURM
@@ -45,13 +45,13 @@ install.packages("R2ucare")  ## for function marray - capture-recapture example
 
 ## R scripts
 
-The following R scripts are parametrized so that the same script can be used for different datasets. Arguments of the scripts are described at the beginning of the R script. 
+The following R scripts are parametrized so that the same script can be used for different examples. Arguments of the scripts are described at the beginning of the R script. 
 
-Scripts `1` run the cppp procedure for one example, while script `2` performs a Monte Carlo simulation of all the cppp procedure; lots of computations here so I have been usint 
+Script `1` run the cppp procedure for one example, while script `2` performs a Monte Carlo simulation of all the cppp procedure.
 
-Scripts `3` uses outputs from scripts `1` and `2` to compute different estimates of the cppp and its variance under various scenarios of computational allocation (i.e. number of MCMC samples and calibration replicates). 
+Scripts `3` uses outputs from scripts `1` and `2` to compute different estimates of the cppp and its variance under various scenarios of computational cost (i.e. number of MCMC samples and calibration replicates). 
 
-Scripts `4` reproduce plots in Section 6 of the paper. 
+Scripts `4` reproduce plots in Section 6 of the paper and in the supplementary material.
 
 ```bash
 
@@ -70,9 +70,9 @@ Scripts `4` reproduce plots in Section 6 of the paper.
 
 The bash scripts `main_EXAMPLENAME.sh` contains all the steps to reproduce results for each of the examples presented in the paper. 
 
-Running the bash script can be memory/time-consuming, especially when calling `2_runMonteCarloCPPP.R`. For results in the paper, I made use of cluster computing managed via SLURM; those files are in the `slurmScripts` folder.
+Running the bash script can be memory/time-consuming, especially when calling `2_runMonteCarloCPPP.R`. For results in the paper, I made use of cluster computing managed via SLURM; those script are in the `slurmScripts` folder.
 
-All scripts (except `4_plotPPPdistr`) are parametrized and can be run separately. Details are in the comments at the beginning of the file. For example to run the CPPP procedure for the newcomb data:
+All scripts (except `4_plotPPPdistr`) are parametrized and can be run separately. Details are in the comments at the beginning of each file. For example to run the CPPP procedure for the newcomb data:
 
 ```bash
 Rscript 1_runCPPP.R \
@@ -86,7 +86,7 @@ Rscript 1_runCPPP.R \
 --calcDisc=TRUE \
 ```
 
-Notice that for each folder there is a script named `model.R`, including a statistical model coded in nimble, with inits and constants, and (optional) discrepancy functions. It also contains the details on MCMC settings for the first MCMC run.
+Notice that for each folder there is a script named `model.R`, including a statistical model coded in nimble, with initial values and constants, and (optional) discrepancy functions. It also contains the details on MCMC settings for the first MCMC run.
 
 ```bash
 --dirExample               ## path to folder containing files for input and outputs 
@@ -96,5 +96,5 @@ Notice that for each folder there is a script named `model.R`, including a stati
 --nIterMCMC                ## number of mcmc samples per calibration replicates
 --returnSamples            ## if TRUE save and return all samples
 --returnDiscrepancies      ## if TRUE save and return all computed discrepancies
---calcDisc                 ## if TRUE compute PPP
+--calcDisc                 ## if TRUE compute the PPP
 ```
