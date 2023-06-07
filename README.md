@@ -36,11 +36,11 @@ install.packages("R2ucare")  ## for function marray - capture-recapture example
 ## Folders 
 
 ```bash
-├── CPPPfunctions			## Containts the main function for the cppp procedure - the scripts can be used by users to use the procedure for their own models
-├── figures						## output folder for figures
-├── sec4_betaBinomialExample    ## code to reproduce example and plot in section 4
-├── sec6_examples				## containts one folder for each examples in section 6	
-└── slurmScripts				## scripts for computing cluster using SLURM
+├── CPPPfunctions	            ## Containts the main function for the cppp procedure
+├── figures						        ## output folder for figures
+├── sec4_betaBinomialExample  ## code to reproduce example and plot in Section 4
+├── sec6_examples				      ## containts one folder for each examples in Section 6	
+└── slurmScripts				      ## scripts for computing cluster using SLURM
 ```
 
 ## R scripts
