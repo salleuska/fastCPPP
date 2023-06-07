@@ -36,11 +36,11 @@ install.packages("R2ucare")  ## for function marray - capture-recapture example
 ## Folders 
 
 ```bash
-├── CPPPfunctions	            ## Containts the main function for the cppp procedure
-├── figures						        ## output folder for figures
+├── CPPPfunctions             ## Containts the main function for the cppp procedure
+├── figures	                  ## output folder for figures
 ├── sec4_betaBinomialExample  ## code to reproduce example and plot in Section 4
-├── sec6_examples				      ## containts one folder for each examples in Section 6	
-└── slurmScripts				      ## scripts for computing cluster using SLURM
+├── sec6_examples             ## containts one folder for each examples in Section 6	
+└── slurmScripts              ## scripts for computing cluster using SLURM
 ```
 
 ## R scripts
@@ -55,9 +55,9 @@ Scripts `4` reproduce plots in Section 6 of the paper.
 
 ```bash
 
-├── 1_runCPPP.R  ## run cppp procedure for one example
-├── 2_runMonteCarloCPPP.R ## run the cppp procedure multiple times for brute force Monte Carlo estimation
-├── 3_computeBootstrapSE.R ## compute Bootstrap estimates of the cppp standard error + coverage
+├── 1_runCPPP.R                       ## run cppp procedure for one example
+├── 2_runMonteCarloCPPP.R             ## run the cppp procedure multiple times for brute force Monte Carlo estimation
+├── 3_computeBootstrapSE.R            ## compute Bootstrap estimates of the cppp standard error + coverage
 ├── 3_computeMCSE.R                   ## compute brute force estimate of the cppp standard error via Monte carlo 
 ├── 3_computePluginSE.R               ## compute Plug-in estimates of the cppp standard error + coverage
 ├── 4_coverage.R                      ## extract results for coverage e
