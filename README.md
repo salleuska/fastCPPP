@@ -74,7 +74,8 @@ Running the bash script can be memory/time-consuming, especially when calling `2
 
 All scripts (except `4_plotPPPdistr`) are parametrized and can be run separately. Details are in the comments at the beginning of the file. For example to run the CPPP procedure for the newcomb data:
 
-`Rscript 1_runCPPP.R \
+```bash
+Rscript 1_runCPPP.R \
 --dirExample=sec6_examples/newcomb \
 --dataPath="sec6_examples/newcomb/light.txt" \
 --runOriginal=TRUE \
@@ -82,7 +83,8 @@ All scripts (except `4_plotPPPdistr`) are parametrized and can be run separately
 --nIterMCMC=1000 \
 --returnSamples=TRUE \
 --returnDiscrepancies=TRUE \
---calcDisc=TRUE \`
+--calcDisc=TRUE \
+```
 
 Notice that for each folder there is a script named `model.R`, including a statistical model coded in nimble, with inits and constants, and (optional) discrepancy functions. It also contains the details on MCMC settings for the first MCMC run.
 
