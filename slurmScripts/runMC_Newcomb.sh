@@ -1,6 +1,5 @@
 #!/bin/bash
 #SBATCH --mail-type=ALL                       
-#SBATCH --mail-user=spaganin@hsph.harvard.edu
 #SBATCH -o out/MCnewcomb_%j.out                 # File to which STDERR will be written, including job ID
 #SBATCH --cpus-per-task=1
 #SBATCH --array=1-550

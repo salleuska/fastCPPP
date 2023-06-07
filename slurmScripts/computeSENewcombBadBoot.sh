@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --mail-type=ALL                       
-#SBATCH --mail-user=spaganin@hsph.harvard.edu
+
 #SBATCH -o out/badMixing_varianceBoot_%j.out                 # File to which STDERR will be written, including job ID
 ######################
 
