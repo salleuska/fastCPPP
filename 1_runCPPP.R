@@ -1,10 +1,18 @@
+#-----------------------------------------#
+## Computational methods for fast Bayesian hierarchical model assessment via calibrated posterior p-values.
+## Sally Paganin
+## last update: June 2023
+## R version 4.3.0 (2023-04-21) -- "Already Tomorrow"
+## nimble version 0.13.2
+##-----------------------------------------#
 #######################
 ## This script perform calulation of the CPPP
 ## for a given example
 #######################
 args <- R.utils::commandArgs(asValue=TRUE)
 #######################
-## Arguments for the scriptss 
+## Script arguments
+#######################
 ## --dirExample               ## directory for input/output
 ## --dataPath                 ## path to data
 ## --runOriginal              ## if TRUE then run first original MCMC (details in the model scripts)

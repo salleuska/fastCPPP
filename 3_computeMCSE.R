@@ -1,16 +1,19 @@
+#-----------------------------------------#
+## Computational methods for fast Bayesian hierarchical model assessment via calibrated posterior p-values.
+## Sally Paganin
+## last update: June 2023
+## R version 4.3.0 (2023-04-21) -- "Already Tomorrow"
+## nimble version 0.13.2
+##-----------------------------------------#
 ## This script compute the cppp variance using the montecarlo samples
 ## to provide a baseline estimate
 
 args <- R.utils::commandArgs(asValue=TRUE)
 ###############################
-# args <- list()
-# args$indexStat <- 2
-# args$dirExample <- "newcomb/montecarlo/"
-
-# Rscript 3_computeMCSE.R --dirExample="dipperCC/montecarlo/" --indexStat=1
-# Rscript 3_computeMCSE.R --dirExample="capRecapSimulated/montecarlo/" --indexStat=1
-# Rscript 3_computeMCSE.R --dirExample="newcomb/montecarlo/" --indexStat=2
-# Rscript 3_computeMCSE.R --dirExample="dipperTT/montecarlo/" --indexStat=1
+## Script arguments
+#######################
+## --filename	 	## path to cppp discrepancy files
+## --indexStat		## index for the discrepancy to use (the runCalibration() function allows for multiple discrepancies)
 ###############################
 ## cppp variance via monte carlo
 

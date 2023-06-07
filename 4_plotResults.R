@@ -1,17 +1,21 @@
+#-----------------------------------------#
+## Computational methods for fast Bayesian hierarchical model assessment via calibrated posterior p-values.
+## Sally Paganin
+## last update: June 2023
+## R version 4.3.0 (2023-04-21) -- "Already Tomorrow"
+## nimble version 0.13.2
+##-----------------------------------------#
 library(ggplot2)
 library(latex2exp)
 library(cowplot)
 
 args <- R.utils::commandArgs(asValue=TRUE)
 #######################
-## set up args for the  script 
+## Script arguments
+#######################
 ## --dirExample   directory
 ## --plotTitle	  title for the plot
 #######################
-# # Example call from bash
-# Rscript 4_plotResults.R --dirExample="dipperCC" --plotTitle="Dipper example - C/C model"
-# Rscript 4_plotResults.R --dirExample="dipperTT" --plotTitle="Dipper example - T/T model"
-# Rscript 4_plotResults.R --dirExample="capRecapSimulated" --plotTitle="Simulated example - T/T model"
 # Rscript 4_plotResults.R --dirExample="newcomb" --plotTitle="Newcomb example"
 # Rscript 4_plotResults.R --dirExample="newcombBadMixing" --plotTitle="Newcomb example - bad mixing"
 #######################

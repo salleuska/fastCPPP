@@ -1,3 +1,10 @@
+#-----------------------------------------#
+## Computational methods for fast Bayesian hierarchical model assessment via calibrated posterior p-values.
+## Sally Paganin
+## last update: June 2023
+## R version 4.3.0 (2023-04-21) -- "Already Tomorrow"
+## nimble version 0.13.2
+##-----------------------------------------#
 ## This script compute the cppp variance using the plug-in estimator 
 ## defined in section 5 of the paper
 ## It also compute the coverage for the intervals
@@ -6,14 +13,10 @@ library(mcmcse) ## mcmcse
 
 args <- R.utils::commandArgs(asValue=TRUE)
 ################################################
-## Possible arguments for the script
+## Script arguments
+#######################
 ## --filename	 	## path to cppp discrepancy files
 ## --indexStat		## index for the discrepancy to use (the runCalibration() function allows for multiple discrepancies)
-
-# args <- list()
-# args$filename="sec6_examples/newcomb/results_nCRep_1000_nIter_1000.rds" 
-# args$indexStat <- 2
-
 #######################
 
 ## number of times we want to repeat the computation

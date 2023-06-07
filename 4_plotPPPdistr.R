@@ -1,6 +1,13 @@
+#-----------------------------------------#
+## Computational methods for fast Bayesian hierarchical model assessment via calibrated posterior p-values.
+## Sally Paganin
+## last update: June 2023
+## R version 4.3.0 (2023-04-21) -- "Already Tomorrow"
+## nimble version 0.13.2
+##-----------------------------------------#
 library(ggplot2)
 library(latex2exp)
-
+##-----------------------------------------#
 ## Dipper example
 ## Distribution of PPP and naive results
 tt <- readRDS("dipperTT/results_nCRep_1000_nIter_10000.rds")

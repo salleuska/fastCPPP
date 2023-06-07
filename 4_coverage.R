@@ -1,29 +1,16 @@
+#-----------------------------------------#
+## Computational methods for fast Bayesian hierarchical model assessment via calibrated posterior p-values.
+## Sally Paganin
+## last update: June 2023
+## R version 4.3.0 (2023-04-21) -- "Already Tomorrow"
+## nimble version 0.13.2
+##-----------------------------------------#
 library(xtable)
 args <- R.utils::commandArgs(asValue=TRUE)
 #######################
-## set up args for the  script 
-## --dirExample
-
-rm(list = ls())
-
-# args <- list()
-# args$dirExample <- "sec6_examples/newcomb"
-
-# args <- list()
-# args$dirExample <- "sec6_examples/newcombBadMixing"
-
-
-# args <- list()
-# args$dirExample <- "sec6_examples/dipperCC"
-
-# args <- list()
-# args$dirExample <- "sec6_examples/dipperTT"
-
-
-# args <- list()
-# args$dirExample <- "sec6_examples/capRecapSimulated"
-
-
+## Script arguments
+#######################
+## --dirExample	 	## directory for input/output
 ##############################
 ## Monte carlo variance - baseline
 ##############################

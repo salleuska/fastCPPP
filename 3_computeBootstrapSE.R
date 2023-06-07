@@ -1,3 +1,10 @@
+#-----------------------------------------#
+## Computational methods for fast Bayesian hierarchical model assessment via calibrated posterior p-values.
+## Sally Paganin
+## last update: June 2023
+## R version 4.3.0 (2023-04-21) -- "Already Tomorrow"
+## nimble version 0.13.2
+##-----------------------------------------#
 ## This script compute the cppp variance using the bootstrapt estimators 
 ## defined in section 5 of the paper
 ## It also compute the coverage for the intervals
@@ -7,16 +14,12 @@ library(mcmcse) ## mcmcse
 
 args <- R.utils::commandArgs(asValue=TRUE)
 ################################################
-## Possible arguments for the script
+## Script arguments
+#######################
 ## --dirExample	 	## directory for input/output
 ## --indexStat		## index for the discrepancy to use (the runCalibration() function allows for multiple discrepancies)
 ## --bootIters      ## numer of bootstrap replications
 #######################
-# args <- list()
-# args$filename="sec6_examples/newcomb/results_nCRep_1000_nIter_1000.rds" 
-# args$indexStat=2 
-# args$bootIters=100
-
 ## number of times we want to repeat the computation
 N <- 500
 ## note: to estimate the variance for different combination of mcmc samples and calibration replicates
@@ -63,19 +66,9 @@ averageCoverageNormal <- array(0, dim = c(length(compCost), length(M)))
 mcVarMBB <- array(0, dim = c(length(compCost), length(M)))
 mcVarNormal <- array(0, dim = c(length(compCost), length(M)))
 
-#N <- 100
-
-
-
-
-
 obsPPP <- res$obsPPP[indexStat]
 
 cat("Start bootstrap variance estimates \n")
-# r <- 1
-# m <- 4
-# k <- 1
-# r <- m <- k <- 1
 for(r in 1:length(compCost)){	
 	R <- compCost[r]/M
 	for(m in 1:length(M)){
