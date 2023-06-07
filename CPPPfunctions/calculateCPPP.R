@@ -176,9 +176,9 @@ runCalibration <- function(model,                   ## nimbleModel compiled
                            discrepancyFunctions = NULL,
                            discrepancyFunctionsArgs = list(),
                            nCalibrationReplicates,
-                           MCMCcontrol = list(niter = 1000,
+                           MCMCcontrol = list(niter = 500,
                                           thin = 1,
-                                          nburnin = 200),                  
+                                          nburnin = 0),                  
                            returnSamples = TRUE,                            
                            returnDiscrepancies = TRUE,
                            calcDisc = TRUE, 
@@ -227,9 +227,9 @@ runCalibration <- function(model,                   ## nimbleModel compiled
     }
 
     ## Default MCMC settings for ppp calculation
-    niter   <- if(is.null(MCMCcontrol$niter))   200    else MCMCcontrol$niter
+    niter   <- if(is.null(MCMCcontrol$niter))   200     else MCMCcontrol$niter
     thin    <- if(is.null(MCMCcontrol$thin))    1       else MCMCcontrol$thin
-    nburnin <- if(is.null(MCMCcontrol$nburnin)) 20     else MCMCcontrol$nburnin
+    nburnin <- if(is.null(MCMCcontrol$nburnin)) 0       else MCMCcontrol$nburnin
 
     
     # if(!inherits(model, "RmodelBaseClass")){
