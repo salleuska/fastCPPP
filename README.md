@@ -2,7 +2,7 @@
 
 Supplementary code for the paper [Computational methods for fast Bayesian hierarchical model assessment via calibrated posterior p-values](https://arxiv.org/abs/2306.04866).
 
-The CPPP procedure is implemented using the `nimble` software and compatible with other models written using the `nimble` language.
+The CPPP procedure is implemented using the `nimble` software and compatible with other models written using the `nimble` language. More info about this  in `CPPPfunctions/REDME.md`.
 
 ## Preliminaries 
 
