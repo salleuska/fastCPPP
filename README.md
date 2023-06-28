@@ -86,7 +86,7 @@ Rscript 1_runCPPP.R \
 --calcDisc=TRUE \
 ```
 
-Notice that for each folder there is a script named `model.R`, including a statistical model coded in nimble, with initial values and constants, and (optional) discrepancy functions. It also contains the details on MCMC settings for the first MCMC run.
+Notice that in each folder there is a script named `model.R`, including a statistical model coded in nimble, with initial values and constants, and discrepancy functions. It also contains the details on MCMC settings for the first MCMC run.
 
 ```bash
 --dirExample               ## path to folder containing files for input and outputs 
