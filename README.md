@@ -2,7 +2,7 @@
 
 Supplementary code for the paper [Computational methods for fast Bayesian hierarchical model assessment via calibrated posterior p-values](https://arxiv.org/abs/2306.04866).
 
-The CPPP procedure is implemented using the `nimble` software and compatible with other models written using the `nimble` language. More info about this  in `CPPPfunctions/REDME.md`.
+The CPPP procedure is implemented using the `nimble` software and is compatible with other models written using the `nimble` language. More info about this is given in `CPPPfunctions/README.md`.
 
 ## Preliminaries 
 
@@ -49,9 +49,9 @@ The following R scripts are parametrized so that the same script can be used for
 
 Script `1` run the cppp procedure for one example, while script `2` performs a Monte Carlo simulation of all the cppp procedure.
 
-Scripts `3` uses outputs from scripts `1` and `2` to compute different estimates of the cppp and its variance under various scenarios of computational cost (i.e. number of MCMC samples and calibration replicates). 
+Scripts `3_*` uses outputs from scripts `1` and `2` to compute different estimates of the cppp and its variance under various scenarios of computational cost (i.e. number of MCMC samples and calibration replicates). 
 
-Scripts `4` reproduce plots in Section 6 of the paper and in the supplementary material.
+Scripts `4_*` make plots in Section 6 of the paper and in the supplementary material.
 
 ```bash
 
@@ -70,9 +70,9 @@ Scripts `4` reproduce plots in Section 6 of the paper and in the supplementary m
 
 The bash scripts `main_EXAMPLENAME.sh` contains all the steps to reproduce results for each of the examples presented in the paper. 
 
-Running the bash script can be memory/time-consuming, especially when calling `2_runMonteCarloCPPP.R`. For results in the paper, I made use of cluster computing managed via SLURM; those script are in the `slurmScripts` folder.
+Running the bash script can be memory/time-consuming, especially when calling `2_runMonteCarloCPPP.R`. For results in the paper, I made use of cluster computing managed via SLURM; those scripts are in the `slurmScripts` folder.
 
-All scripts (except `4_plotPPPdistr`) are parametrized and can be run separately. Details are in the comments at the beginning of each file. For example to run the CPPP procedure for the newcomb data:
+All scripts (except `4_plotPPPdistr.R`) are parametrized and can be run separately. Details are given in the comments at the beginning of each file. For example to run the CPPP procedure for the newcomb data:
 
 ```bash
 Rscript 1_runCPPP.R \
@@ -86,7 +86,7 @@ Rscript 1_runCPPP.R \
 --calcDisc=TRUE \
 ```
 
-Notice that in each folder there is a script named `model.R`, including a statistical model coded in nimble, with initial values and constants, and discrepancy functions. It also contains the details on MCMC settings for the first MCMC run.
+Notice that in each folder there is a script named `model.R`, including a statistical model coded in nimble, with initial values and constants, and discrepancy functions. It also contains the details regarding the MCMC settings for the first MCMC run.
 
 ```bash
 --dirExample               ## path to folder containing files for input and outputs 
