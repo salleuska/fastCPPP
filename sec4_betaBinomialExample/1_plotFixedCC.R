@@ -17,7 +17,6 @@ M <- c(10, 20, 50, 100, 200, 500, 1000)
 
 variance <- array(0, dim = c(length(aVec), length(compCost), length(M), length(cppp0)))
 bias <- array(0, dim = c(length(aVec), length(compCost), length(M), length(cppp0)))
-#betaScenario <- 4
 for(betaScenario in 1:length(aVec)){
 	
 	## Set the scenario for the null ppp distribution 
