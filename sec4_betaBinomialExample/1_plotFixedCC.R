@@ -405,8 +405,8 @@ allPlots <- ggarrange(plotListBIAS[[3]],
                   align = "hv", # Align them both, horizontal and vertical
                   ncol = 2, nrow = 3) 
 
-ggsave("figures/Fig2_BetaExperiment.PNG", allPlots, 
-		width = 10, height = 11)
+ggsave("figures/Fig2_BetaExperiment.pdf", allPlots, 
+		width = 10, height = 11, dpi = 300)
 
 
 plotListBIAS2[[1]]
@@ -426,6 +426,6 @@ allPlots2 <- ggarrange(plotListBIAS2[[3]],
                   align = "hv", # Align them both, horizontal and vertical
                   ncol = 3, nrow = 3) 
 allPlots2
-ggsave("figures/Fig2_BetaExperiment2.PNG", allPlots2, 
+ggsave("figures/Fig2_BetaExperiment2.pdf", allPlots2, 
 		width = 10, height = 11)
 

@@ -202,6 +202,6 @@ allPlots <- ggarrange(plotListBIAS[[3]] ,
                   align = "hv", # Align them both, horizontal and vertical
                   ncol = 2, nrow = 3) 
 
-ggsave("figures/FigSM_fixedM_BetaExperiment.PNG", allPlots, 
-		width = 10, height = 8)
+ggsave("figures/FigSM_fixedM_BetaExperiment.pdf", allPlots, 
+		width = 10, height = 8, dpi = 300)
 
