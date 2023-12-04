@@ -201,9 +201,8 @@ rel_heights = c(0.1, 1, 0.2))
 ggsave(plotToSave, file = paste0("figures/", basename(dirExample), "_varComparison.png"), 
  	    width = 16, height = 5, dpi = 400, scale = 0.75)
 
-
 ########################################
-## Extra - Figures for slides
+## Extra - Figures for presentations
 ########################################
 
 # p_grid <- plot_grid(plotlist = p_no_legend[c(2, 3)], nrow = 1)
