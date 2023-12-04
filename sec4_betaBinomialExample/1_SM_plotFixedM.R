@@ -12,7 +12,7 @@ cppp0 <- c(0.01, 0.05, 0.2, 0.5)
 ## number of MCMCM samples 
 M <- c(50, 100, 200, 500)
 ## number of calibration replicates
-nCal <- c(100, 500, 1000, 2000)
+nCal <- c(100, 500, 1000)
 
 variance <- array(0, dim = c(length(aVec), length(nCal), length(M), length(cppp0)))
 bias <- array(0, dim = c(length(aVec), length(nCal), length(M), length(cppp0)))
@@ -185,14 +185,10 @@ for(betaScenario in 1:length(aVec)){
 # save_plot("figures/Fig2_SD.PNG", allPlots, 
 # 		  base_height = 5, base_width = 10, ncol = 1)
 
-plotListBIAS[[2]] <- plotListBIAS[[2]] + 
- expand_limits(y = 0.06) 
-plotListBIAS[[3]] <- plotListBIAS[[3]] + 
- expand_limits(y = 0.06) 
 
 library(ggpubr)
-allPlots <- ggarrange(plotListBIAS[[3]] , 
-				  plotListBIAS[[2]] ,
+allPlots <- ggarrange(plotListBIAS[[3]], 
+				  plotListBIAS[[2]],
 				  plotListSD[[3]], 
 				  plotListSD[[2]],
 				  plotListRMSE[[3]], 
@@ -204,4 +200,21 @@ allPlots <- ggarrange(plotListBIAS[[3]] ,
 
 ggsave("figures/FigSM_fixedM_BetaExperiment.pdf", allPlots, 
 		width = 10, height = 8, dpi = 300)
+
+allPlots <- ggarrange(plotListBIAS[[3]], 
+				  plotListBIAS[[2]],
+				  plotListBIAS[[4]],
+				  plotListSD[[3]], 
+				  plotListSD[[2]],
+				  plotListSD[[4]],
+				  plotListRMSE[[3]], 
+				  plotListRMSE[[2]], 
+				  plotListRMSE[[4]], 
+                  common.legend = T, # COMMON LEGEND
+                  legend = "bottom", # legend position
+                  align = "hv", # Align them both, horizontal and vertical
+                  ncol = 3, nrow = 3) 
+
+ggsave("figures/FigSM_fixedM_BetaExperiment2.pdf", allPlots, 
+		width = 12, height = 8, dpi = 300)
 

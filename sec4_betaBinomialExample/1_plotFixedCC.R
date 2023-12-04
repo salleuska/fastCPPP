@@ -409,8 +409,24 @@ ggsave("figures/Fig2_BetaExperiment.pdf", allPlots,
 		width = 10, height = 11, dpi = 300)
 
 
-plotListBIAS2[[1]]
+allPlots <- ggarrange(plotListBIAS[[3]], 
+				  plotListBIAS[[2]],
+				  plotListBIAS[[4]],
+				  plotListSD[[3]], 
+				  plotListSD[[2]],
+				  plotListSD[[4]],
+				  plotListRMSE[[3]], 
+				  plotListRMSE[[2]], 
+				  plotListRMSE[[4]], 
+                  common.legend = T, # COMMON LEGEND
+                  legend = "bottom", # legend position
+                  align = "hv", # Align them both, horizontal and vertical
+                  ncol = 3, nrow = 3) 
 
+ggsave("figures/Fig2_BetaExperiment_test.pdf", allPlots, 
+		width = 14, height = 11, dpi = 300)
+
+###########
 library(ggpubr)
 allPlots2 <- ggarrange(plotListBIAS2[[3]], 
 				  plotListBIAS2[[2]] ,
