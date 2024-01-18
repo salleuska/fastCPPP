@@ -134,7 +134,10 @@ for(c in 1:length(compCost)){
 			
 
 			## ESS (transfer method)
+			## estimate of the integrated autocorrelation for the 
+			## short chain
 			tmpAverageESS[j] <- mean(tauTransfer/M[m])
+			## the acual ESS would be M[m]/tauTransfer
 			## Coverage
 
 			CILow <- cpppHat -1.96*sqrt(tmpVariancePlugin[j])
