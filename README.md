@@ -72,7 +72,7 @@ The bash scripts `main_EXAMPLENAME.sh` contains all the steps to reproduce resul
 
 Running the bash script can be memory/time-consuming, especially when calling `2_runMonteCarloCPPP.R`. For results in the paper, I made use of cluster computing managed via SLURM; those scripts are in the `slurmScripts` folder.
 
-All scripts (except `4_plotPPPdistr.R`) are parametrized and can be run separately. Details are given in the comments at the beginning of each file. For example to run the CPPP procedure for the newcomb data:
+All scripts (except `4_plotPPPdistr.R` and `5_times.R`) are parametrized and can be run separately. Details are given in the comments at the beginning of each file. For example to run the CPPP procedure for the newcomb data:
 
 ```bash
 Rscript 1_runCPPP.R \
