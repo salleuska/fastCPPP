@@ -17,7 +17,6 @@ M <- c(10, 20, 50, 100, 200, 500, 1000)
 
 variance <- array(0, dim = c(length(aVec), length(compCost), length(M), length(cppp0)))
 bias <- array(0, dim = c(length(aVec), length(compCost), length(M), length(cppp0)))
-#betaScenario <- 4
 for(betaScenario in 1:length(aVec)){
 	
 	## Set the scenario for the null ppp distribution 
@@ -406,12 +405,28 @@ allPlots <- ggarrange(plotListBIAS[[3]],
                   align = "hv", # Align them both, horizontal and vertical
                   ncol = 2, nrow = 3) 
 
-ggsave("figures/Fig2_BetaExperiment.PNG", allPlots, 
-		width = 10, height = 11)
+ggsave("figures/Fig2_BetaExperiment.pdf", allPlots, 
+		width = 10, height = 11, dpi = 300)
 
 
-plotListBIAS2[[1]]
+allPlots <- ggarrange(plotListBIAS[[3]], 
+				  plotListBIAS[[2]],
+				  plotListBIAS[[4]],
+				  plotListSD[[3]], 
+				  plotListSD[[2]],
+				  plotListSD[[4]],
+				  plotListRMSE[[3]], 
+				  plotListRMSE[[2]], 
+				  plotListRMSE[[4]], 
+                  common.legend = T, # COMMON LEGEND
+                  legend = "bottom", # legend position
+                  align = "hv", # Align them both, horizontal and vertical
+                  ncol = 3, nrow = 3) 
 
+ggsave("figures/Fig2_BetaExperiment_test.pdf", allPlots, 
+		width = 14, height = 11, dpi = 300)
+
+###########
 library(ggpubr)
 allPlots2 <- ggarrange(plotListBIAS2[[3]], 
 				  plotListBIAS2[[2]] ,
@@ -427,6 +442,6 @@ allPlots2 <- ggarrange(plotListBIAS2[[3]],
                   align = "hv", # Align them both, horizontal and vertical
                   ncol = 3, nrow = 3) 
 allPlots2
-ggsave("figures/Fig2_BetaExperiment2.PNG", allPlots2, 
+ggsave("figures/Fig2_BetaExperiment2.pdf", allPlots2, 
 		width = 10, height = 11)
 

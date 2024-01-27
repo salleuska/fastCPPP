@@ -10,7 +10,7 @@ library(latex2exp)
 ##-----------------------------------------#
 ## Dipper example
 ## Distribution of PPP and naive results
-tt <- readRDS("dipperTT/results_nCRep_1000_nIter_10000.rds")
+tt <- readRDS("sec6_examples/dipperTT/results_nCRep_1000_nIter_10000.rds")
 ## naive cppp
 cpppTT <- mean(tt$repPPP[1,] < tt$obsPPP[1])
 
@@ -29,7 +29,7 @@ ggsave(plotTT, file = paste0("figures/dipperTT_pppDistribution.png"),
  	    width = 6, height = 4, dpi = 300)
 
 
-cc <- readRDS("dipperCC/results_nCRep_1000_nIter_10000.rds")
+cc <- readRDS("sec6_examples/dipperCC/results_nCRep_1000_nIter_10000.rds")
 ## naive cppp
 mean(cc$repPPP[1,] < cc$obsPPP[1])
 
@@ -50,7 +50,7 @@ ggsave(plotCC, file = paste0("figures/dipperCC_pppDistribution.png"),
 
 ## Newcomb example
 ## Distribution of PPP and naive results
-res <- readRDS("newcomb/results_nCRep_1000_nIter_1000.rds")
+res <- readRDS("sec6_examples/newcomb/results_nCRep_1000_nIter_1000.rds")
 ## naive cppp
 cpppTT <- mean(res$repPPP[2,] < res$obsPPP[2])
 
@@ -69,7 +69,7 @@ ggsave(plotTT, file = paste0("figures/newcomb_pppDistribution.png"),
 
 
 ## Distribution of PPP and naive results
-res <- readRDS("newcombBadMixing/results_nCRep_1000_nIter_1000.rds")
+res <- readRDS("sec6_examples/newcombBadMixing/results_nCRep_1000_nIter_1000.rds")
 ## naive cppp
 cpppTT <- mean(res$repPPP[2,] <= res$obsPPP[2])
 
@@ -89,10 +89,9 @@ ggsave(plotTT, file = paste0("figures/newcomb_badMixingpppDistribution.png"),
 
 ## CapRecap simulated example
 ## Distribution of PPP and naive results
-res <- readRDS("capRecapSimulated/results_nCRep_1000_nIter_1000.rds")
+res <- readRDS("sec6_examples/capRecapSimulated/results_nCRep_1000_nIter_1000.rds")
 ## naive cppp
 cpppTT <- mean(res$repPPP[1,] <= res$obsPPP[1])
-
 
 dfTT <- data.frame(x = res$repPPP[1,])
 plotTT <- ggplot(dfTT, aes(x=x)) + 
