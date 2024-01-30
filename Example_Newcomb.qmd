@@ -4,10 +4,10 @@ format:
   html:
     embed-resources: true
     self-contained-math: true
-editor: visual
+editor: source
 ---
 
-This example uses the code provided in the `fastCPPP` supplementary materials to compute the cppp and its variance for the Newcomb data. 
+This example uses the code provided in the `fastCPPP` supplementary materials to compute the cppp and its variance for the Newcomb data.
 
 The first step runs the `1_runCPPP.R` script from a terminal. We use $50$ calibration replicates and $100$ MCMC iterations.
 
@@ -34,21 +34,21 @@ Details for the MCMC run such as number of iteration (`nIterMCMCOriginal`), burn
 
 The output of `1_runCPPP.R` will be saved in `sec6_examples/newcomb/results_nCRep_50_nIter_100.rds` and it will contains a list with:
 
-- `obsPPP` : vector containing observed ppp for each discrepancy considered (1st element is the model log-likelihood by default)
+-   `obsPPP` : vector containing observed ppp for each discrepancy considered (1st element is the model log-likelihood by default)
 
-- `repPPP` : matrix of size `nCalibrationReplicates` x n_discrepancy, containg the ppp for each calibration replicate
+-   `repPPP` : matrix of size `nCalibrationReplicates` x n_discrepancy, containg the ppp for each calibration replicate
 
-- `obsDisc`: (if `returnDiscrepancies=TRUE`). Array of size n_discrepancy x `nIterMCMCOriginal` x 2, contaning values of the computed discrepancies on the original data. 
+-   `obsDisc`: (if `returnDiscrepancies=TRUE`). Array of size n_discrepancy x `nIterMCMCOriginal` x 2, contaning values of the computed discrepancies on the original data.
 
-- `repDisc`: (if `returnDiscrepancies=TRUE`). List of length `nCalibrationReplicates` . For each element of the list there is an array of size n_discrepancy x `nIterMCMC` x 2, contaning values of the computed discrepancies on for the replicated data. 
+-   `repDisc`: (if `returnDiscrepancies=TRUE`). List of length `nCalibrationReplicates` . For each element of the list there is an array of size n_discrepancy x `nIterMCMC` x 2, contaning values of the computed discrepancies on for the replicated data.
 
-- `replicatedMCMCSamples`: (if `returnSamples = TRUE`). List of length `nCalibrationReplicates`. For each element of the list there is an matrix containg the MCMC samples of each calibration replicate. 
+-   `replicatedMCMCSamples`: (if `returnSamples = TRUE`). List of length `nCalibrationReplicates`. For each element of the list there is an matrix containg the MCMC samples of each calibration replicate.
 
-- `time` : time in second for the all procedure
+-   `time` : time in second for the all procedure
 
-### Compute the cppp and variance 
+### Compute the cppp and variance
 
-The following `R` code computes the CPPP and its variance via the plug-in estimator. 
+The following `R` code computes the CPPP and its variance via the plug-in estimator.
 
 ```{r}
 ## Read file containing the computed discrepancy
@@ -62,7 +62,7 @@ print(cppp)
 
 ```
 
-Computing the variance: 
+Computing the variance:
 
 ```{r}
 ## number of calibration rep
@@ -120,4 +120,3 @@ variancePluginEst <- (term1 + term2)/r
 print(variancePluginEst)
 ```
 
-So our approximated result suggest to reject the model used for the Newcomb data.
