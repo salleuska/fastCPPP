@@ -151,4 +151,4 @@ install.packages("nimble")
 install.packages("maotai")  ## moving block bootstrap
 install.packages("mcmcse")  ## mcmc variance
 ```
-A minimal example is given here.
+A minimal example is given [https://htmlpreview.github.io/https://github.com/salleuska/fastCPPP/blob/main/Example_Newcomb.html](https://htmlpreview.github.io/https://github.com/salleuska/fastCPPP/blob/main/Example_Newcomb.html)
