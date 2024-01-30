@@ -2,9 +2,11 @@
 
 Supplementary code for the paper "Computational methods for fast Bayesian hierarchical model assessment via calibrated posterior p-values."
 
-The CPPP procedure is implemented using the `nimble` software and compatible with other models written using the `nimble` language. The code in this repository has been written for the purpose of running different experiments for the manuscript. There are some plans to extend this to be broadly accessible and user friendly in the future. If you want to try this out, you can jump at the tutorial at [the end](https://github.com/salleuska/fastCPPP/blob/main/README.md#try_mewhat-if-i-just-want-to-try-out-the-cppp-approximation).
+The CPPP procedure is implemented using the `nimble` software and compatible with other models written using the `nimble` language. The code in this repository has been written for the purpose of running different experiments for the manuscript. There are some plans to extend this to be broadly accessible and user friendly in the future. If you want to try this out, you can jump at the tutorial at [the end](#what-if-i-just-want-to-try-out-the-cppp-approximation).
+
 
 ## Note
+
 
 This folder comes with some pre-computed `.rds` results for the different example to allow to reproduce figures in the manuscript as running the script `2_runMonteCarloCPPP.R` for Monte Carlo simulation of all the procedure is computationally intensive. 
 
