@@ -16,6 +16,7 @@ Make sure to have the following `R` packages installed.
 
 ```r
 install.packages("nimble")
+install.packages("R.utils") 
 
 ## packages for cppp variance estimation
 install.packages("maotai")  ## moving block bootstrap
