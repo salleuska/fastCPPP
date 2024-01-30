@@ -138,7 +138,7 @@ Rscript 4_plotResults.R --dirExample="sec6_examples/capRecapSimulated" --plotTit
 
 ```
 
-## What if I just want to try out the cppp approximation?
+### What if I just want to try out the cppp approximation?
 
 Minimum requirements are `1_runCPPP.R` script and the following package.
 
