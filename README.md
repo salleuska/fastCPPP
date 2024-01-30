@@ -1,8 +1,14 @@
 # fastCPPP
 
-Supplementary code for the paper [Computational methods for fast Bayesian hierarchical model assessment via calibrated posterior p-values](https://arxiv.org/abs/2306.04866).
+Supplementary code for the paper "Computational methods for fast Bayesian hierarchical model assessment via calibrated posterior p-values."
 
-The CPPP procedure is implemented using the `nimble` software and is compatible with other models written using the `nimble` language. More info about this is given in `CPPPfunctions/README.md`.
+The CPPP procedure is implemented using the `nimble` software and compatible with other models written using the `nimble` language. The code in this repository has been written for the purpose of running different experiments for the manuscript. There are some plans to extend this to be broadly accessible and user friendly in the future. 
+
+
+## Note for review
+
+This folder comes with some pre-computed `.rds` results for the newcomb example to allow to reproduce figures in the manuscript as running the script `2_runMonteCarloCPPP.R ` is computationally intensive. 
+E.md`.
 
 ## Preliminaries 
 
@@ -88,6 +94,8 @@ Rscript 1_runCPPP.R \
 
 Notice that in each folder there is a script named `model.R`, including a statistical model coded in nimble, with initial values and constants, and discrepancy functions. It also contains the details regarding the MCMC settings for the first MCMC run.
 
+Info on the parameters for `1_runCPPP.R`; output will be a list  saved in an `.rds` file. 
+
 ```bash
 --dirExample               ## path to folder containing files for input and outputs 
 --dataPath                 ## path to data
@@ -98,3 +106,49 @@ Notice that in each folder there is a script named `model.R`, including a statis
 --returnDiscrepancies      ## if TRUE save and return all computed discrepancies
 --calcDisc                 ## if TRUE compute the PPP
 ```
+
+
+## Steps for reproducing Figures
+
+### Section 4 
+
+Figures 3 in Section 4 (and Figure S2 in SM)
+
+```
+Rscript sec4_betaBinomialExample/1_plotFixedCC.R
+Rscript sec4_betaBinomialExample/1_SM_plotFixedM.R
+```
+
+### Section 6
+
+Figures in Section 6; the scripts uses pre-computed values of the cppp variance using different methods in the paper. The results are saved in each example folder in `sec6_examples/[name_example]/[file.rds]`  where `file.rds` can be:
+
+ * `varianceMC.rds` - cppp variance estimated via Monte Carlo (baseline)
+ * `variancePlugin.rds` - cppp variance estimated via plug-in and using a transfer estimator
+ * `varianceBootstrap.rds` - cppp variance estimated via Bootstrap (Bootstrap-normal and Bootstrap-Plugin)
+
+```bash
+Rscript 4_plotResults.R --dirExample="sec6_examples/newcomb" --plotTitle="Newcomb example - good mixing"
+
+Rscript 4_plotResults.R --dirExample="sec6_examples/newcombBadMixing" --plotTitle="Newcomb example - bad mixing"
+
+Rscript 4_plotResults.R --dirExample="sec6_examples/dipperTT" --plotTitle="Dipper example - T/T model"
+
+Rscript 4_plotResults.R --dirExample="sec6_examples/dipperCC" --plotTitle="Dipper example - C/C model"
+
+Rscript 4_plotResults.R --dirExample="sec6_examples/capRecapSimulated" --plotTitle="Simulated example - T/T model"
+
+```
+
+## What if I just want to try out the cppp approximation?
+
+Minimum requirements are `1_runCPPP.R` script and the following package.
+
+```r
+install.packages("nimble")
+
+## packages for cppp variance estimation
+install.packages("maotai")  ## moving block bootstrap
+install.packages("mcmcse")  ## mcmc variance
+```
+A minimal example is given here.

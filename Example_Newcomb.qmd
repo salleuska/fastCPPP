@@ -1,0 +1,123 @@
+---
+title: "CPPP - tutorial example"
+format: 
+  html:
+    embed-resources: true
+    self-contained-math: true
+editor: visual
+---
+
+This example uses the code provided in the `fastCPPP` supplementary materials to compute the cppp and its variance for the Newcomb data. 
+
+The first step runs the `1_runCPPP.R` script from a terminal. We use $50$ calibration replicates and $100$ MCMC iterations.
+
+```{bash}
+#| eval: true
+#| message: false
+#| output: false
+
+
+## Compute CPPP
+
+Rscript 1_runCPPP.R \
+--dirExample=sec6_examples/newcomb \
+--dataPath="sec6_examples/newcomb/light.txt" \
+--runOriginal=TRUE \
+--nCalibrationReplicates=50 \
+--nIterMCMC=100 \
+--returnSamples=TRUE \
+--returnDiscrepancies=TRUE \
+--calcDisc=TRUE 
+```
+
+Details for the MCMC run such as number of iteration (`nIterMCMCOriginal`), burnin, samplers for the original data are specified in `sec6_examples/newcomb/model.R`. This file contains also the definition of the data model and the discrepancy; as default, the model-log likelihood will be calculated. The resulting MCMC samples will be saved separately in `sec6_examples/newcomb/MCMCSamples.rds`.
+
+The output of `1_runCPPP.R` will be saved in `sec6_examples/newcomb/results_nCRep_50_nIter_100.rds` and it will contains a list with:
+
+- `obsPPP` : vector containing observed ppp for each discrepancy considered (1st element is the model log-likelihood by default)
+
+- `repPPP` : matrix of size `nCalibrationReplicates` x n_discrepancy, containg the ppp for each calibration replicate
+
+- `obsDisc`: (if `returnDiscrepancies=TRUE`). Array of size n_discrepancy x `nIterMCMCOriginal` x 2, contaning values of the computed discrepancies on the original data. 
+
+- `repDisc`: (if `returnDiscrepancies=TRUE`). List of length `nCalibrationReplicates` . For each element of the list there is an array of size n_discrepancy x `nIterMCMC` x 2, contaning values of the computed discrepancies on for the replicated data. 
+
+- `replicatedMCMCSamples`: (if `returnSamples = TRUE`). List of length `nCalibrationReplicates`. For each element of the list there is an matrix containg the MCMC samples of each calibration replicate. 
+
+- `time` : time in second for the all procedure
+
+### Compute the cppp and variance 
+
+The following `R` code computes the CPPP and its variance via the plug-in estimator. 
+
+```{r}
+## Read file containing the computed discrepancy
+res <- readRDS("sec6_examples/newcomb/results_nCRep_50_nIter_100.rds")
+## The discrepancy used in the paper has index 2
+indexStat <- 2
+## CPPP
+cppp <- mean(res$repPPP[indexStat, ] <= res$obsPPP[indexStat])
+
+print(cppp)
+
+```
+
+Computing the variance: 
+
+```{r}
+## number of calibration rep
+r <- dim(res$repPPP)[2]
+## number of MCMC samples per calibration rep
+m <- 100
+#######
+library(mcmcse)
+
+obsPPP <- res$obsPPP[2]
+
+## dealtaObs is a vector of differences of the observed discrepancy
+## computed for samples from the posterior predictive
+## and the discrepancy computed on the original data
+deltaObs <- res$obsDisc[indexStat,,2] - res$obsDisc[indexStat,,1]
+pppVec <- res$repPPP[2,]
+
+## Here we use each ppp_r (calibration replicate)
+## to individuate a quantil on the original 
+## chain deltaObs
+
+deltaQ <- quantile(deltaObs, prob = pppVec)
+
+tauTransfer <- numeric(length(deltaQ))
+
+for(i in 1:length(deltaQ)) {
+	indSeqTransfer <- as.numeric(I(deltaObs <= deltaQ[i]))
+	if(length(unique(indSeqTransfer)) == 1) {
+		## If there is no variance, tau is enormous
+		tauTransfer[i] <- 1e+10
+	} else {
+		## 
+		varianceMCMC 	<- try(mcse(indSeqTransfer, r = 3)$se^2, silent = TRUE)
+
+		varianceInd 	<- var(indSeqTransfer)
+		tauTransfer[i] 	<- (varianceMCMC * length(deltaObs))/varianceInd	
+	}
+}
+
+## 1. first term E_Y[V[K|Y]]
+## compute mean and variance of Ktilde
+meanVec <- m*pppVec
+varVec <- m*pppVec*(1 - pppVec)*tauTransfer
+
+fVec <- pnorm(m*obsPPP + 0.5, mean = meanVec, sd = sqrt(varVec), lower.tail = TRUE)
+
+term1 <- mean(fVec*(1-fVec))
+
+## 2. second term V_Y[E[K|Y]]
+cpppHat <- mean(pppVec <= obsPPP)
+term2 <- cpppHat*(1 - cpppHat)	
+
+variancePluginEst <- (term1 + term2)/r
+
+print(variancePluginEst)
+```
+
+So our approximated result suggest to reject the model used for the Newcomb data.
