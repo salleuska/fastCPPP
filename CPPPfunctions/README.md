@@ -5,7 +5,7 @@ The script `calculateCPPP` contains functions to perform the CPPP procedure desc
 The script `registeredDiscrepancies.R` implements a default discrepancy measure based on the data log-likelihood. 
 
 To use this, one just needs to i) have `nimble` installed and ii) source the 2 scripts. The main function to use is called `runCalibration()`.
-This function runs the CPPP procedure described in the paper using the advantages of the OPP paradigm of a `nimbleModel`
+This function runs the CPPP procedure described in the paper, making use of a `nimbleModel` object
 
 - calculate as `observedPPP` using original MCMC samples and model
 - for each calibration replicate
